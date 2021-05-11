@@ -2,3 +2,8 @@
 <p><%= @garden.address %></p>
 <p><%= @garden.postcode %></p>
 <p><%= @garden.description %></p>
+
+<%= simple_form_for [ @garden, @booking ] do |f| %>
+  <%= f.input :date %>
+  <%= f.submit "Make booking", class: "btn btn-primary" %>
+<% end %>
