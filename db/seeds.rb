@@ -1,6 +1,14 @@
-Garden.new(title:'New Garden', description: 'a huge garden with pool', address:"London", postcode:'N4 2DW', user_id: 1 )
-Garden.new(title:'second Garden', description: 'a tiny garden with toilet', address:"London city", postcode:'SW11 1TB', user_id: 1)
-
-
-
-
+puts 'Creating 10 fake gardens...'
+if Rails.env.development?
+  Garden.destroy_all
+end
+10.times do
+  garden = Garden.new(
+    title:    "#{Faker::Compass.direction}-facing garden with #{Faker::House.furniture}",
+    description: "#{Faker::Movies::HarryPotter.quote}",
+    address: "#{Faker::Address.street_address}, London",
+    postcode: "#{Faker::Address.postcode}",
+    user_id: 1)
+  garden.save!
+end
+puts 'Finished!'
