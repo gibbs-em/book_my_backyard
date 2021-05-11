@@ -1,0 +1,7 @@
+<h1>Your Bookings</h1>
+
+<% @bookings.each do |booking| %>
+<h3><%= booking.garden.title %></h3>
+<p><%= booking.date %></p>
+
+<% end %>
