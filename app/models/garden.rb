@@ -4,7 +4,7 @@ class Garden < ApplicationRecord
   has_many :reviews, through: :bookings
 
   validates :title,  presence: true
-  validates :description,  presence: true
-  validates :address,  presence: true, uniqueness: true
-  validates :postcode,  presence: true
+  validates :description, presence: true
+  validates :address, presence: true, uniqueness: true
+  validates :postcode, presence: true
 end
