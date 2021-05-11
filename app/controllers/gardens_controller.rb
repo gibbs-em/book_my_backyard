@@ -4,6 +4,7 @@ class GardensController < ApplicationController
   end
 
   def new
+    raise
     @garden = Garden.new
   end
   
