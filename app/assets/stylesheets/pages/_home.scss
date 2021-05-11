@@ -1,1 +1,17 @@
 // Specific CSS for your home-page
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  padding: 20vh 0vh 20vh 0vh;
+}
+
+.hero-text {
+  text-align: center;
+  color: black;
+}
+
+.mission {
+  padding-top: 10vh;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
