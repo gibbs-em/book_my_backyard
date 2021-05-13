@@ -3,8 +3,96 @@
     <h1>Book my Backyard</h1>
     <h3>The place to book outdoor space</h3>
   </div>
+  <div class="mission">
+  <p>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</p>
+  <%= link_to "Find a backyard", gardens_path, class:"btn" %>
+  </div>
 </div>
-<div class="mission">
-<p>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</p>
-<%= link_to "Find a backyard", gardens_path, class:"btn btn-primary" %>
+
+<div class="card-columns">
+  <div class="card garden">
+    <% gardenOne = @gardens.sample %>
+    <img class="card-img-top" src="..." alt="Garden image">
+    <div class="card-body">
+      <h5 class="card-title"><%= gardenOne.title %></h5>
+      <p class="card-text"><%= gardenOne.description %></p>
+      <p class="card-text"><small class="text-muted"><%= gardenOne.postcode %></small></p>
+    </div>
+  </div>
+  <div class="card p-3">
+    <blockquote class="blockquote mb-0 card-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card garden">
+    <% gardenTwo = @gardens.sample %>
+    <img class="card-img-top" src="..." alt="Garden image">
+    <div class="card-body">
+      <h5 class="card-title"><%= gardenTwo.title %></h5>
+      <p class="card-text"><%= gardenTwo.description %></p>
+      <p class="card-text"><small class="text-muted"><%= gardenTwo.postcode %></small></p>
+    </div>
+  </div>
+  <div class="card text-center p-3">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+      <footer class="blockquote-footer">
+        <small>
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
+  <div class="card garden">
+    <% gardenThree = @gardens.sample %>
+    <img class="card-img" src="..." alt="Garden image">
+      <div class="card-body">
+        <h5 class="card-title"><%= gardenThree.title %></h5>
+        <p class="card-text"><%= gardenThree.description %></p>
+        <p class="card-text"><small class="text-muted"><%= gardenThree.postcode %></small></p>
+      </div>
+  </div>
+  <div class="card garden">
+    <% gardenFour = @gardens.sample %>
+    <img class="card-img" src="..." alt="Garden image">
+       <div class="card-body">
+         <h5 class="card-title"><%= gardenFour.title %></h5>
+         <p class="card-text"><%= gardenFour.description %></p>
+         <p class="card-text"><small class="text-muted"><%= gardenFour.postcode %></small></p>
+       </div>
+  </div>
+  <div class="card garden">
+    <% gardenFive = @gardens.sample %>
+    <img class="card-img" src="..." alt="Garden image">
+    <div class="card-body">
+      <h5 class="card-title"><%= gardenFive.title %></h5>
+      <p class="card-text"><%= gardenFive.description %></p>
+      <p class="card-text"><small class="text-muted"><%= gardenFive.postcode %></small></p>
+    </div>
+  </div>
+  <div class="card garden">
+    <% gardenSix = @gardens.sample %>
+    <img class="card-img" src="..." alt="Garden image">
+    <div class="card-body">
+      <h5 class="card-title"><%= gardenSix.title %></h5>
+      <p class="card-text"><%= gardenSix.description %></p>
+      <p class="card-text"><small class="text-muted"><%= gardenSix.postcode %></small></p>
+    </div>
+  </div>
+  <div class="card p-3 text-right">
+    <blockquote class="blockquote mb-0">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+      <footer class="blockquote-footer">
+        <small class="text-muted">
+          Someone famous in <cite title="Source Title">Source Title</cite>
+        </small>
+      </footer>
+    </blockquote>
+  </div>
 </div>
+
