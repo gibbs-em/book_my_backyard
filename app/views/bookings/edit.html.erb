@@ -1,0 +1,9 @@
+<h2>Your Booking</h2>
+
+<p><%= @booking.garden.title %></p>
+<p><%= @booking.date  %></p>
+
+<%= simple_form_for [ @garden, @booking ] do |f| %>
+  <%= f.input :date %>
+  <%= f.submit "Edit booking", class: "btn btn-success" %>
+<% end %>
