@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
-  padding: 20vh 0vh 20vh 0vh;
+  background-image: linear-gradient(rgb(196, 196, 196), rgb(196, 196, 196));
+  padding: 5vh 0vh 5vh 0vh;
 }
 
 .hero-text {
@@ -10,8 +10,31 @@
 }
 
 .mission {
-  padding-top: 10vh;
+  padding-top: 5vh;
   text-align: center;
   width: 50%;
   margin: auto;
 }
+
+.card-columns {
+  margin: 20px;
+}
+
+.p-3 {
+  background-color: rgb(241, 241, 241)
+}
+
+.garden {
+  background-color: rgb(196, 196, 196);
+  color: white;
+}
+
+.card-img, .card-img-top {
+  color: black;
+}
+
+.btn {
+  background-color: rgb(241, 241, 241);
+}
+
+

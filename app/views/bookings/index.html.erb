@@ -2,6 +2,6 @@
 
 <% @bookings.each do |booking| %>
 <h3><%= booking.garden.title %></h3>
-<p><%= booking.date %></p>
-
+<p><%= booking.date %>
+<%= link_to '<i class="fas fa-seedling"></i>'.html_safe, booking_path(booking) %></p>
 <% end %>
