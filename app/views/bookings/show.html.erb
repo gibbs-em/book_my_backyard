@@ -2,8 +2,20 @@
 
 <p><%= @booking.garden.title %></p>
 <p><%= @booking.date  %></p>
+<% if @booking.garden.toilet %>
+<p>Toilet 🚽</p>
+<% end %>
+<% if @booking.garden.rain_shelter %>
+<p>Rain Shelter ☔</p>
+<% end %>
 <% if @booking.garden.bbq %>
-<p>BBQ Included 🔥</p>
+<p>BBQ 🔥</p>
+<% end %>
+<% if @booking.garden.peaceful %>
+<p>Peaceful ✌</p>
+<% end %>
+<% if @booking.garden.heater %>
+<p>Heater 🥵</p>
 <% end %>
 
 <p><%= link_to "All Gardens", gardens_path %></p>
