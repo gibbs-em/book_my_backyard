@@ -40,7 +40,7 @@ class GardensController < ApplicationController
   def set_garden
     @garden = Garden.find(params[:id])
   end
-  
+
   def garden_params
     params.require(:garden).permit(:title, :description, :address, :postcode)
   end
