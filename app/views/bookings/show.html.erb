@@ -5,4 +5,5 @@
 
 <p><%= link_to "All Gardens", gardens_path %></p>
 <p><%= link_to "All Bookings", bookings_path %></p>
+<p><%= link_to "Edit Booking", edit_booking_path(@booking) %></p>
 <p><%= link_to "Cancel Booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %></p>
