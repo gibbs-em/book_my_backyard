@@ -1,0 +1,8 @@
+<h1>Leave for @review.booking.garden.title</h1>
+
+<%= simple_form_for [ @reviews, @booking ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :rating %>
+  <%= f.submit %>
+<% end %>

@@ -1,9 +1,21 @@
+<div class="d-inline-flex p-1 justify-content-between">
+<div class="garden-info">
 <h2><%= @garden.title %></h2>
 <p><%= @garden.address %></p>
 <p><%= @garden.postcode %></p>
 <p><%= @garden.description %></p>
-
+</div>
+<div class="booking-form p-3 w-40">
 <%= simple_form_for [ @garden, @booking ] do |f| %>
   <%= f.input :date %>
   <%= f.submit "Make booking", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>
+
+<h4>Reviews</h4>
+<% @garden.reviews.each do |review| %>
+ <h6><%= review.title %></h6>
+ <p><%= review.rating %>⭐️</p>
+ <p><%= review.title %></p>
 <% end %>

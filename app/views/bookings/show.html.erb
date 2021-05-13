@@ -1,11 +1,26 @@
+<div class="d-inline-flex p-1 justify-content-between">
+<div class="booking-info">
 <h2>Your Booking</h2>
 
+<h3><%= link_to @booking.garden.title, garden_path %></h3>
 <p><%= @booking.garden.title %></p>
 <p><%= @booking.date  %></p>
+
 <% if @booking.garden.bbq %>
 <p>BBQ Included 🔥</p>
 <% end %>
+</div>
 
+<div class="review-box p-2 w-25">
+<h4>Leave a review for <%= @booking.garden.title %></h4>
+<%= simple_form_for [ @booking, @review ] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit review", class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>
 <p><%= link_to "All Gardens", gardens_path %></p>
 <p><%= link_to "All Bookings", bookings_path %></p>
 <p><%= link_to "Edit Booking", edit_booking_path(@booking) %></p>

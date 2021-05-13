@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :gardens do
     resources :bookings, only: :create
   end
-  resources :bookings, except: :create
-
+  resources :bookings, except: :create do
+    resources :reviews, except: :index
+  end
 end
