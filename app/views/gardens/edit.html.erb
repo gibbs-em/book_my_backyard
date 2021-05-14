@@ -5,6 +5,12 @@
   <%= f.input :description %>
   <%= f.input :address %>
   <%= f.input :postcode %>
-  <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false %>
+  <div class="features">
+    <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+    <%= f.input :bbq, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+    <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+    <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+    <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+  </div>
   <%= f.submit %>
 <% end %>

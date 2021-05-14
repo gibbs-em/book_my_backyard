@@ -29,7 +29,7 @@ class GardensController < ApplicationController
   def update
     @garden.update(garden_params)
     if @garden.save
-      render :show
+      redirect_to garden_path(@garden)
     else
       render :edit
     end
@@ -42,6 +42,6 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:title, :description, :address, :postcode)
+    params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful)
   end
 end
