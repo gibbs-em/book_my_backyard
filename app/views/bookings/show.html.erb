@@ -5,9 +5,20 @@
 <h3><%= link_to @booking.garden.title, garden_path %></h3>
 <p><%= @booking.garden.title %></p>
 <p><%= @booking.date  %></p>
-
 <% if @booking.garden.bbq %>
-<p>BBQ Included 🔥</p>
+<p>BBQ 🔥</p>
+<% end %>
+<% if @booking.garden.peaceful %>
+<p>Peaceful ✌</p>
+<% end %>
+<% if @booking.garden.heater %>
+<p>Heater 🥵</p>
+<% end %>
+<% if @booking.garden.toilet %>
+<p>Toilet 🚽</p>
+<% end %>
+<% if @booking.garden.rain_shelter %>
+<p>Shelter ☔</p>
 <% end %>
 </div>
 

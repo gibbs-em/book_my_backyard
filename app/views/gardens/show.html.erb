@@ -1,16 +1,27 @@
 <div class="d-inline-flex p-1 justify-content-between">
-<div class="garden-info">
-<h2><%= @garden.title %></h2>
-<p><%= @garden.address %></p>
-<p><%= @garden.postcode %></p>
-<p><%= @garden.description %></p>
-</div>
-<div class="booking-form p-3 w-40">
-<%= simple_form_for [ @garden, @booking ] do |f| %>
-  <%= f.input :date %>
-  <%= f.submit "Make booking", class: "btn btn-primary" %>
-<% end %>
-</div>
+  <div class="garden-info">
+    <h2><%= @garden.title %></h2>
+    <p><%= @garden.address %></p>
+    <p><%= @garden.postcode %></p>
+    <p><%= @garden.description %></p>
+    <div class="featrues">
+      <h3>Features</h3>
+      <ul>
+        <% if @garden.bbq %><li>BBQ 🔥</li><% end %>
+        <% if @garden.peaceful %><li>Peaceful ✌</li><% end %>
+        <% if @garden.heater %><li>Heater 🥵</li><% end %>
+        <% if @garden.toilet %><li>Toilet 🚽</li><% end %>
+        <% if @garden.rain_shelter %><li>Shelter ☔</li><% end %>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="booking-form p-3 w-40">
+    <%= simple_form_for [ @garden, @booking ] do |f| %>
+      <%= f.input :date %>
+      <%= f.submit "Make booking", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
 
 <h4>Reviews</h4>
