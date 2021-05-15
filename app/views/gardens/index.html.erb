@@ -4,8 +4,13 @@
 
   <div class="cards d-flex justify-content-center align-content-stretch flex-wrap">
     <% @gardens.each do |garden| %>
-      <div class="card m-2" style="width: 250px; height: 350px">
-        <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card m-2" style="width: 250px; height: 450px">
+        <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+        <% if garden.photo.attached? %>
+            <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
+        <% end %>
         <div class="card-body">
           <h5 class="card-title"> <%= garden.title %> </h5>
           <p class="card-text"> <%= garden.description %> </p>
