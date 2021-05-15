@@ -1,7 +1,8 @@
 puts 'Creating 10 fake gardens...'
-if Rails.env.development?
+# if Rails.env.development?
   Garden.destroy_all
-end
+
+# end
 10.times do
   garden = Garden.new(
     title:    "#{Faker::Compass.direction}-facing garden with #{Faker::House.furniture}",
