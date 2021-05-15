@@ -1,7 +1,10 @@
-puts 'Creating 10 fake gardens...'
 if Rails.env.development?
   Garden.destroy_all
 end
+
+
+
+puts 'Creating 10 fake gardens...'
 
 ["10 Downing Street", "221B Baker Street", "48 Doughty Street", "25 Brook Street", "186 Fleet Street", "71 Salford Road", "59A Fairlight Road"].each do |address|
   garden = Garden.new(
@@ -11,4 +14,6 @@ end
     user_id: 1)
   garden.save!
 end
+
+
 puts 'Finished!'
