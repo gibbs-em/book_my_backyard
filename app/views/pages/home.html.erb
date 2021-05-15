@@ -5,7 +5,7 @@
   </div>
   <div class="mission">
   <p>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</p>
-  <%= link_to "Find a backyard", gardens_path, class:"btn" %>
+  <%= link_to "Find a backyard", gardens_path, class:"btn home" %>
   </div>
 </div>
 
@@ -16,15 +16,16 @@
     <div class="card-body">
       <h5 class="card-title"><%= gardenOne.title %></h5>
       <p class="card-text"><%= gardenOne.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenOne.postcode %></small></p>
+      <p class="card-text"><small class="text-muted"><%= gardenOne.address %></small></p>
     </div>
   </div>
   <div class="card p-3">
     <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <% reviewOne = @reviews.sample %>
+      <p><%= reviewOne.description.capitalize %></p>
       <footer class="blockquote-footer">
         <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
+          <cite title="Reviewer"><%= reviewOne.booking.user.name.capitalize %></cite>
         </small>
       </footer>
     </blockquote>
@@ -35,15 +36,16 @@
     <div class="card-body">
       <h5 class="card-title"><%= gardenTwo.title %></h5>
       <p class="card-text"><%= gardenTwo.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenTwo.postcode %></small></p>
+      <p class="card-text"><small class="text-muted"><%= gardenTwo.address %></small></p>
     </div>
   </div>
   <div class="card text-center p-3">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+    <% reviewTwo = @reviews.sample %>
+      <p><%= reviewTwo.description.capitalize %></p>
       <footer class="blockquote-footer">
         <small>
-          Someone famous in <cite title="Source Title">Source Title</cite>
+          <cite title="Reviewer"><%= reviewTwo.booking.user.name.capitalize %></cite>
         </small>
       </footer>
     </blockquote>
@@ -54,7 +56,7 @@
       <div class="card-body">
         <h5 class="card-title"><%= gardenThree.title %></h5>
         <p class="card-text"><%= gardenThree.description %></p>
-        <p class="card-text"><small class="text-muted"><%= gardenThree.postcode %></small></p>
+        <p class="card-text"><small class="text-muted"><%= gardenThree.address %></small></p>
       </div>
   </div>
   <div class="card garden">
@@ -63,7 +65,7 @@
        <div class="card-body">
          <h5 class="card-title"><%= gardenFour.title %></h5>
          <p class="card-text"><%= gardenFour.description %></p>
-         <p class="card-text"><small class="text-muted"><%= gardenFour.postcode %></small></p>
+         <p class="card-text"><small class="text-muted"><%= gardenFour.address %></small></p>
        </div>
   </div>
   <div class="card garden">
@@ -72,7 +74,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= gardenFive.title %></h5>
       <p class="card-text"><%= gardenFive.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenFive.postcode %></small></p>
+      <p class="card-text"><small class="text-muted"><%= gardenFive.address %></small></p>
     </div>
   </div>
   <div class="card garden">
@@ -81,15 +83,16 @@
     <div class="card-body">
       <h5 class="card-title"><%= gardenSix.title %></h5>
       <p class="card-text"><%= gardenSix.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenSix.postcode %></small></p>
+      <p class="card-text"><small class="text-muted"><%= gardenSix.address %></small></p>
     </div>
   </div>
   <div class="card p-3 text-right">
     <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+    <% reviewThree = @reviews.sample %>
+      <p><%= reviewThree.description.capitalize %></p>
       <footer class="blockquote-footer">
         <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
+          <cite title="Reviewer"><%= reviewThree.booking.user.name.capitalize %></cite>
         </small>
       </footer>
     </blockquote>

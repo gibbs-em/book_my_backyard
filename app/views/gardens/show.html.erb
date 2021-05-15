@@ -1,32 +1,61 @@
-<div class="d-inline-flex p-1 justify-content-between">
-  <div class="garden-info">
-    <h2><%= @garden.title %></h2>
+<div class="container">
+
+  <div class="garden-header">
+    <h2><%= @garden.title.capitalize %></h2>
     <p><%= @garden.address %></p>
-    <p><%= @garden.postcode %></p>
-    <p><%= @garden.description %></p>
-    <div class="featrues">
-      <h3>Features</h3>
+  </div>
+
+  <div class="garden-images">
+      <div class="grid-container">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/san-fransisco-768x432.jpg" class="img-fluid" alt="san francisco">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/london-768x432.jpg" class="img-fluid"  alt="london">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/new-york-768x432.jpg" class="img-fluid" alt="new york">
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/cape-town-768x432.jpg" class="img-fluid" alt="cape town">
+      </div>
+      <div class="card-body">
+          <h3>Hosted by <%= @garden.user.name.capitalize %></h3>
+      </div>
+  </div>
+
+  <div class="features-and-form">
+    <div class="features">
       <ul>
-        <% if @garden.bbq %><li>BBQ 🔥</li><% end %>
-        <% if @garden.peaceful %><li>Peaceful ✌</li><% end %>
-        <% if @garden.heater %><li>Heater 🥵</li><% end %>
-        <% if @garden.toilet %><li>Toilet 🚽</li><% end %>
+        <% if @garden.bbq %><li>🔥 BBQ</li><% end %>
+        <% if @garden.peaceful %><li>✌ Peaceful</li><% end %>
+        <% if @garden.heater %><li>🥵 Heater</li><% end %>
+        <% if @garden.toilet %><li>🚽 Toilet</li><% end %>
         <% if @garden.rain_shelter %><li>Shelter ☔</li><% end %>
       </ul>
     </div>
+
+    <div class="booking-form p-3 w-40">
+      <%= simple_form_for [ @garden, @booking ] do |f| %>
+        <%= f.input :date %>
+        <%= f.submit "Make booking", class: "btn btn-primary" %>
+      <% end %>
+    </div>
   </div>
-  
-  <div class="booking-form p-3 w-40">
-    <%= simple_form_for [ @garden, @booking ] do |f| %>
-      <%= f.input :date %>
-      <%= f.submit "Make booking", class: "btn btn-primary" %>
+
+  <div class="garden-description">
+    <p><%= @garden.description %></p>
+    <hr size="8" width="95%" color="grey">
+  </div>
+
+  <div class="card-columns reviews">
+    <h4>Reviews</h4>
+    <% @garden.reviews.each do |review| %>
+    <div class="card p-3">
+      <blockquote class="blockquote mb-0 card-body">
+       <h2><%= review.title.capitalize %></h2>
+       <p><%= "⭐️" * review.rating %></p>
+       <p><%= review.description.capitalize %></p>
+        <footer class="blockquote-footer">
+          <small class="text-muted">
+            <cite title="Reviewer"><%= review.booking.user.name.capitalize %></cite>
+          </small>
+        </footer>
+      </blockquote>
+    </div>
     <% end %>
   </div>
-</div>
 
-<h4>Reviews</h4>
-<% @garden.reviews.each do |review| %>
- <h6><%= review.title %></h6>
- <p><%= review.rating %>⭐️</p>
- <p><%= review.title %></p>
-<% end %>
