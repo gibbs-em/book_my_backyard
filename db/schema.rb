@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_191436) do
+ActiveRecord::Schema.define(version: 2021_05_15_095957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 2021_05_13_191436) do
     t.string "title"
     t.text "description"
     t.text "address"
-    t.text "postcode"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -38,6 +37,8 @@ ActiveRecord::Schema.define(version: 2021_05_13_191436) do
     t.boolean "bbq", default: false
     t.boolean "peaceful", default: false
     t.boolean "heater", default: false
+    t.float "latitude", default: 0.0
+    t.float "longitude", default: 0.0
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 
