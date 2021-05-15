@@ -2,7 +2,7 @@
 <div class="booking-info">
 <h2>Your Booking</h2>
 
-<h3><%= link_to @booking.garden.title, garden_path %></h3>
+<h3><%= link_to @booking.garden.title, garden_path(@garden) %></h3>
 <p><%= @booking.garden.title %></p>
 <p><%= @booking.date  %></p>
 <% if @booking.garden.bbq %>

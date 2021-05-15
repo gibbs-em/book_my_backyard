@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
   end
-  
+
   def create
     @garden = Garden.find(params[:garden_id])
     @booking = Booking.new(booking_params)
@@ -20,6 +20,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @review = Review.new
+    @garden = @booking.garden
   end
 
   def index
