@@ -1,7 +1,8 @@
+puts 'Creating fake gardens & reviews...'
+
 if Rails.env.development?
   Garden.destroy_all
 end
-
 
 
 puts 'Creating 10 fake gardens...'
@@ -15,5 +16,14 @@ puts 'Creating 10 fake gardens...'
   garden.save!
 end
 
+
+3.times do
+  review = Review.new(
+    title: 'Great Place!',
+    description: 'I would stay here again',
+    rating: 4,
+    booking_id: 1
+    )
+end
 
 puts 'Finished!'

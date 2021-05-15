@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     @review.booking.user = current_user
     if @review.save
-      redirect_to booking_path(@booking)
+      redirect_to garden_path(@booking.garden)
     else
       render "booking/show"
     end
