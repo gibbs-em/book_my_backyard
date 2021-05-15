@@ -3,6 +3,12 @@ class GardensController < ApplicationController
 
   def index
     @gardens = Garden.all
+    @markers = @gardens.geocoded.map do |garden|
+      {
+        lat: garden.latitude,
+        lng: garden.longitude
+      }
+    end
   end
 
   def show
@@ -42,6 +48,6 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful)
+    params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful, :photo)
   end
 end
