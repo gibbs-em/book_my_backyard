@@ -7,7 +7,6 @@
     <% end %>
     <h2><%= @garden.title %></h2>
     <p><%= @garden.address %></p>
-    <p><%= @garden.postcode %></p>
     <p><%= @garden.description %></p>
     <div class="featrues">
       <h3>Features</h3>
@@ -20,7 +19,7 @@
       </ul>
     </div>
   </div>
-  
+
   <div class="booking-form p-3 w-40">
     <%= simple_form_for [ @garden, @booking ] do |f| %>
       <%= f.input :date %>
