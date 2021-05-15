@@ -2,9 +2,9 @@ class Garden < ApplicationRecord
   belongs_to :user
   has_many :bookings
   has_many :reviews, through: :bookings
-
-  validates :title,  presence: true
+  geocoded_by :address
+  validates :title, presence: true
   validates :description, presence: true
   validates :address, presence: true, uniqueness: true
-  validates :postcode, presence: true
+  after_validation :geocode, if: :will_save_change_to_address?
 end
