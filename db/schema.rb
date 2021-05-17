@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_15_100621) do
+ActiveRecord::Schema.define(version: 2021_05_17_125742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 2021_05_15_100621) do
     t.boolean "heater", default: false
     t.float "latitude", default: 0.0
     t.float "longitude", default: 0.0
+    t.decimal "price"
+    t.integer "capacity"
     t.index ["user_id"], name: "index_gardens_on_user_id"
   end
 
