@@ -238,8 +238,14 @@ puts "Review created: #{review4.title}"
 puts "--"
 puts "
 *****************
-All bookings and reviews are under the Team Gifted Garden
-Login details are as follows: email: firstname@me.org password: password
+All bookings and reviews are under the Team Gifted Garden.
+
+Login details are as follows:
+email: #{emily.email}
+email: #{cindy.email}
+email: #{dani.email}
+email: #{thomas.email}
+password: password
 *****************
 "
 
