@@ -14,6 +14,8 @@
         <div class="card-body">
           <h5 class="card-title"> <%= garden.title %> </h5>
           <p class="card-text"> <%= garden.description %> </p>
+          <p class="card-text"> <%= garden.price %> </p>
+          <p class="card-text"> <%= garden.capacity %> </p>
         </div>
         <%= link_to "Details", garden_path(garden), class: "btn btn-success" %>
       </div>
