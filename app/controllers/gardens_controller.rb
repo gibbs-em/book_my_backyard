@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:edit, :update]
+  before_action :set_garden, only: [:edit, :update, :destroy]
 
   def index
     @gardens = Garden.all
@@ -41,6 +41,11 @@ class GardensController < ApplicationController
     end
   end
 
+  def destroy
+    @garden.destroy
+    redirect_to gardens_path
+  end
+
   private
 
   def set_garden
@@ -48,6 +53,6 @@ class GardensController < ApplicationController
   end
 
   def garden_params
-    params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful, :photo)
+    params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful, :photo, :price, :capacity)
   end
 end
