@@ -1,33 +1,41 @@
 <div class="container">
 
-<h1 class = 'm-5'>All Gardens</h1>
+  <h1 class = 'm-5'>All Gardens</h1>
 
-  <div class="cards row">
-    <% @gardens.each do |garden| %>
-     <div class="card-rounded card m-2" style="width: 10rem;">
-      <%# <div class="card m-2" style="width: 220px; height: 350px; overflow: hidden;"> %>
-        <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
-        <% if garden.photo.attached? %>
-            <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
-          <% else %>
-            <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
-        <% end %>
-        <div class="card-body ml-2">
-          <h5 class="card-title"> <%= garden.title %> </h5>
-          <p class="card-text"> £<%= garden.price %> </p>
-          <%# <p class="card-text text-truncate"> <%= garden.description %>
-          <p class="card-text"> Fit: <%= garden.capacity %> people </p>
+  <div class="d-flex flex-row">
+    <%# --- Garden Cards --- %>
+    <div class="cards row">
+      <% @gardens.each do |garden| %>
+      <div class="card-rounded card m-2" style="width: 10rem;">
+        <%# <div class="card m-2" style="width: 220px; height: 350px; overflow: hidden;"> %>
+          <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+          <% if garden.photo.attached? %>
+              <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
+            <% else %>
+              <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
+          <% end %>
+
+          <div class="card-body ml-2">
+            <h5 class="card-title"> <%= garden.title %> </h5>
+            <p class="card-text"> £<%= garden.price %> </p>
+            <%# <p class="card-text text-truncate"> <%= garden.description %>
+            <p class="card-text"> Fit: <%= garden.capacity %> people </p>
+          <%= link_to "Details", garden_path(garden), class: "btn btn-outline-primary btn-rounded text-center" %>
+          </div>
+
+
+
         </div>
+      <% end %>
+    </div>
 
-        <%= link_to "Details", garden_path(garden), class: "btn btn-primary btn-rounded" %>
-      </div>
-    <% end %>
-  </div>
+    <%# --- MAP --- %>
+    <div id="map"
+        style="width: 100%; height: 600px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 
-  <div id="map"
-       style="width: 100%; height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 
 </div>
