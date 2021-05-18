@@ -8,5 +8,7 @@ class Garden < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :address, presence: true, uniqueness: true
+  validates :price, presence: true
+  validates :capacity, presence: true
   after_validation :geocode, if: :will_save_change_to_address?
 end
