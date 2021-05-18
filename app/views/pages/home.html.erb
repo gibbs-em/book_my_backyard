@@ -13,7 +13,7 @@
   <div class="card garden">
     <% gardenOne = @gardens.sample %>
     <% if gardenOne.photo.attached? %>
-        <%= cl_image_tag gardenOne.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+        <%= cl_image_tag gardenOne.photo.key, crop: :fill, class: "card-img-top" %>
       <% else %>
         <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
     <% end %>
@@ -37,9 +37,9 @@
   <div class="card garden">
     <% gardenTwo = @gardens.sample %>
     <% if gardenTwo.photo.attached? %>
-          <%= cl_image_tag gardenTwo.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+          <%= cl_image_tag gardenTwo.photo.key, crop: :fill, class: "card-img-top" %>
         <% else %>
-          <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
+        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
       <% end %>
     <div class="card-body">
       <h5 class="card-title"><%= gardenTwo.title %></h5>
@@ -61,7 +61,7 @@
   <div class="card garden">
     <% gardenThree = @gardens.sample %>
     <% if gardenThree.photo.attached? %>
-        <%= cl_image_tag gardenThree.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+        <%= cl_image_tag gardenThree.photo.key, crop: :fill, class: "card-img-top" %>
       <% else %>
         <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
     <% end %>
@@ -74,7 +74,7 @@
   <div class="card garden">
     <% gardenFour = @gardens.sample %>
     <% if gardenFour.photo.attached? %>
-        <%= cl_image_tag gardenFour.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+        <%= cl_image_tag gardenFour.photo.key, crop: :fill, class: "card-img-top" %>
       <% else %>
         <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
     <% end %>
@@ -87,7 +87,7 @@
   <div class="card garden">
     <% gardenFive = @gardens.sample %>
     <% if gardenFive.photo.attached? %>
-        <%= cl_image_tag gardenFive.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+        <%= cl_image_tag gardenFive.photo.key, crop: :fill, class: "card-img-top" %>
       <% else %>
         <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
     <% end %>
@@ -100,7 +100,7 @@
   <div class="card garden">
     <% gardenSix = @gardens.sample %>
     <% if gardenSix.photo.attached? %>
-        <%= cl_image_tag gardenSix.photo.key, width: 25, height: 25, crop: :fill, class: "card-img-top" %>
+        <%= cl_image_tag gardenSix.photo.key, crop: :fill, class: "card-img-top" %>
       <% else %>
         <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
     <% end %>
