@@ -19,13 +19,15 @@
       <div class="card-body">
           <h3>Hosted by <%= @garden.user.name.capitalize %></h3>
       </div>
-      <div class="edit-delete">
-          <h3><%= link_to "Delete Garden",
-            garden_path(@garden),
-            method: :delete,
-            data: { confirm: "Are you sure?" }%></h3>
-          <h3><%= link_to "Edit Garden", edit_garden_path %></h3>
-      </div>
+      <% if current_user == @garden.user %>
+        <div class="edit-delete">
+            <h3><%= link_to "Delete Garden",
+              garden_path(@garden),
+              method: :delete,
+              data: { confirm: "Are you sure?" }%></h3>
+            <h3><%= link_to "Edit Garden", edit_garden_path %></h3>
+        </div>
+      <% end %>
   </div>
 
   <div class="features-and-form">
