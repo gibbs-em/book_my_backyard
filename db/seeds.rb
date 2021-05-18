@@ -29,7 +29,9 @@ garden1 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/10_Downing_Street.jpg')), filename: '10_Downing_Street.jpg')
 garden1.save!
@@ -44,7 +46,9 @@ garden2 = Garden.new(
   rain_shelter: true,
   bbq: true,
   peaceful: false,
-  heater: true
+  heater: true,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/Team_Gifted.jpg')), filename: 'Team_Gifted.jpg')
 garden2.save!
@@ -69,7 +73,9 @@ garden3 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden3.jpg')), filename: 'garden3.jpg')
 garden3.save!
@@ -84,7 +90,9 @@ garden4 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden4.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden4.jpg')), filename: 'garden4.jpg')
 garden4.save!
@@ -109,7 +117,9 @@ garden5 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden5.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden5.jpg')), filename: 'garden5.jpg')
 garden5.save!
@@ -124,7 +134,9 @@ garden6 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden6.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden6.jpg')), filename: 'garden6.jpg')
 garden6.save!
@@ -149,7 +161,9 @@ garden7 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden7.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden7.jpg')), filename: 'garden7.jpg')
 garden7.save!
@@ -164,7 +178,9 @@ garden8 = Garden.new(
   rain_shelter: [true, false].sample,
   bbq: [true, false].sample,
   peaceful: [true, false].sample,
-  heater: [true, false].sample
+  heater: [true, false].sample,
+  price: (35..185).to_a.sample,
+  capacity: (10..50).to_a.sample
 )
 garden8.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/garden8.jpg')), filename: 'garden8.jpg')
 garden8.save!
