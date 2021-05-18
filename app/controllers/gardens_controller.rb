@@ -1,5 +1,5 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:edit, :update]
+  before_action :set_garden, only: [:edit, :update, :destroy]
 
   def index
     @gardens = Garden.all
@@ -39,6 +39,11 @@ class GardensController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @garden.destroy
+    redirect_to gardens_path
   end
 
   private
