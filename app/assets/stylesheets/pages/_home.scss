@@ -1,20 +1,43 @@
 // Specific CSS for your home-page
-.hero-image {
-  background-image: linear-gradient(rgb(196, 196, 196), rgb(196, 196, 196));
-  padding: 5vh 0vh 5vh 0vh;
+.hero-flex {
+  display: flex;
+  margin: 40px;
+  align-items: center;
+}
+
+.hero-img {
+  height: 70vh;
+  margin-right: 8px
 }
 
 .hero-text {
-  text-align: center;
+  text-align: left;
   color: black;
+  width: 40vh;
+  flex-grow: 1;
+  h3 {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    line-height: 1.4;
+  }
 }
 
-.mission {
-  padding-top: 5vh;
-  text-align: center;
-  width: 50%;
-  margin: auto;
+.button {
+  margin-top: 32px;
+  text-decoration: none
 }
+
+a.cta {
+  color: white;
+  text-decoration: none;
+  background-color: #00917C;
+  border-radius: 50px;
+  margin-top: 40px;
+  padding: 16px 24px 16px 24px;
+  font-family: 'Roboto', sans-serif, 300;
+}
+
+
 
 .card-columns {
   margin: 20px;

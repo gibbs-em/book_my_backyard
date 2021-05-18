@@ -1,14 +1,11 @@
-<div class="hero-image">
+<div class="hero-flex">
   <div class="hero-text">
     <h1>Book my Backyard</h1>
-    <h3>The place to book outdoor space</h3>
-  </div>
-  <div class="mission">
-  <p>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</p>
-  <%= link_to "Find a backyard", gardens_path, class:"btn home" %>
-  </div>
+    <h3>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</h3>
+    <div class="button"><%= link_to "Find a backyard", gardens_path, class:"cta" %></div>
+    </div>
+  <%= image_tag "homepage-hero.png", crop: :fill, class: "hero-img" %>
 </div>
-
 <div class="card-columns">
   <div class="card garden">
     <% gardenOne = @gardens.sample %>
