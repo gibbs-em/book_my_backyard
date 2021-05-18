@@ -64,6 +64,16 @@ cindy = User.new(
 cindy.save!
 puts "User created: #{cindy.name}"
 
+puts "--"
+puts "Creating Colin"
+colin = User.new(
+  name: "Colin",
+  email: "colin@me.org",
+  password: "password"
+)
+colin.save!
+puts "User created: #{colin.name}"
+
 garden3 = Garden.new(
   title:    "Sherlock's Hideaway",
   description: "Ha! Grass isn't a garden! It's an affront to the natural flora! Show me a garden of of native trees flowers I'll show you a place where nature thrives!",
