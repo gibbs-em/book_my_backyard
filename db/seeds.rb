@@ -1,13 +1,14 @@
-puts "Detroying all Users, gardens, bookings & reviews..."
-puts "Destroying all Gardens...."
-Garden.destroy_all
-puts "Destroying all Bookings...."
-Booking.destroy_all
-puts "Destroying all Reviews...."
-Review.destroy_all
-puts "Destroying all Users...."
-User.destroy_all
-
+if Rails.env.development?
+  puts "Detroying all Users, gardens, bookings & reviews..."
+  puts "Destroying all Gardens...."
+  Garden.destroy_all
+  puts "Destroying all Bookings...."
+  Booking.destroy_all
+  puts "Destroying all Reviews...."
+  Review.destroy_all
+  puts "Destroying all Users...."
+  User.destroy_all
+end  
 puts "Creating Users, gardens, bookings & reviews..."
 puts "--"
 puts "Creating Emily & her gardens"

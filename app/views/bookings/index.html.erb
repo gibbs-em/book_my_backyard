@@ -1,7 +1,41 @@
-<h1>Your Bookings</h1>
+<div class="container m-5">
 
-<% @bookings.each do |booking| %>
-<h3><%= booking.garden.title %></h3>
-<p><%= booking.date %>
-<%= link_to '<i class="fas fa-seedling"></i>'.html_safe, booking_path(booking) %></p>
-<% end %>
+
+<h1 class= "mb-5" >All My Bookings</h1>
+
+<%# --- Nav Tab --- %>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Upcoming</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Past</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Cancelled</a>
+  </li>
+ 
+</ul>
+
+
+<div class="cards d-flex justify-content-center align-content-stretch flex-wrap">
+  <% @bookings.each do |booking| %>
+    <div class="card  m-2" style="width: 18rem;">
+      <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+      
+       <% if booking.garden.photo.attached? %>
+            <%= cl_image_tag booking.garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
+          <% else %>
+            <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
+        <% end %>
+      
+      <div class="card-body">
+        <h5 class="card-title"><%= booking.garden.title %></h5>
+        <p class="card-text">Booking date: <%= booking.date %></p>
+        <%= link_to 'Detial'.html_safe, booking_path(booking), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+</div>
