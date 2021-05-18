@@ -4,7 +4,7 @@
 
   <div class="cards d-flex justify-content-center align-content-stretch flex-wrap">
     <% @gardens.each do |garden| %>
-      <div class="card m-2" style="width: 250px; height: 450px">
+      <div class="card m-2" style="width: 250px; height: 450px; overflow: hidden;">
         <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
         <% if garden.photo.attached? %>
             <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
@@ -13,16 +13,20 @@
         <% end %>
         <div class="card-body">
           <h5 class="card-title"> <%= garden.title %> </h5>
-          <p class="card-text"> <%= garden.description %> </p>
-          <p class="card-text"> <%= garden.price %> </p>
+          <p class="card-text"> £<%= garden.price %> </p>
+          <p class="card-text text-truncate"> <%= garden.description %> </p>
           <p class="card-text"> <%= garden.capacity %> </p>
         </div>
-        <%= link_to "Details", garden_path(garden), class: "btn btn-success" %>
+
+        <%= link_to "Details", garden_path(garden), class: "btn btn-primary rounded" %>
       </div>
     <% end %>
   </div>
+
   <div id="map"
        style="width: 100%; height: 600px;"
        data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
 </div>
