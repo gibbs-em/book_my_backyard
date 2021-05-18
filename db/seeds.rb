@@ -196,6 +196,22 @@ booking3 = Booking.new(
 booking3.save!
 puts "Booking created: ID:#{booking3.id} on #{booking3.date}"
 
+booking4 = Booking.new(
+  user_id: emily.id,
+  garden_id: garden6.id,
+  date: Date.parse('2021-05-18')
+)
+booking4.save!
+puts "Booking created: ID:#{booking4.id} on #{booking4.date}"
+
+booking5 = Booking.new(
+  user_id: emily.id,
+  garden_id: garden3.id,
+  date: Date.parse('2021-05-20')
+)
+booking5.save!
+puts "Booking created: ID:#{booking5.id} on #{booking5.date}"
+
 puts "--"
 puts "Creating Reviews"
 
