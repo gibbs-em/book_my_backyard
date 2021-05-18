@@ -18,7 +18,7 @@
 <div class="cards row justify-content-center">
 
   <% @bookings.each do |booking| %>
-    <div class="booking-card card row m-2" style="width: 18rem;">
+    <div class="booking-card card m-2" style="width: 18rem;">
       
        <% if booking.garden.photo.attached? %>
             <%= cl_image_tag booking.garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
@@ -29,6 +29,7 @@
       <div class="card-body ml-4">
         <h5 class="card-title"><%= booking.garden.title %></h5>
         <p class="card-text">Booking date: <%= booking.date %></p>
+        
         <%= link_to 'Detail'.html_safe, booking_path(booking), class: "btn btn-primary" %>
       </div>
     </div>
