@@ -1,3 +1,7 @@
+#address {
+  color: $green;
+}
+
 .garden-images {
   width: 95%;
   height: 25%;
@@ -20,21 +24,12 @@
 
 h3 {
   font-size: 20px;
+  font-weight: bolder;
+}
+
+h4 {
+  font-size: 16px;
   font-weight: lighter;
-}
-
-.features-and-form {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  margin: 40px;
-}
-
-.garden-description {
-  padding: 20px;
-  margin-right: 30px;
-  margin-left: 0px;
-
 }
 
 .booking-form {
@@ -50,3 +45,42 @@ ul {
   list-style-type: none;
 }
 
+.masonry-column {
+  padding: 0 1px;
+}
+
+.masonry-column div {
+  margin: 5px 1px;
+}
+
+.garden-image {
+  border-radius: 24px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.garden-image-2 {
+  border-radius: 24px;
+  width: 50%;
+  object-fit: cover;
+}
+
+.feature i {
+  font-size: 32px;
+  color: $green;
+}
+
+.feature p {
+  font-size: 18px;
+  font-weight: bolder;
+  margin-bottom: 0px;
+}
+
+.feature span {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+#strike {
+  text-decoration: line-through;
+}

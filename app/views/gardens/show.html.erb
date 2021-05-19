@@ -1,73 +1,181 @@
 
+<% 
+ secondary_images = [
+  "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80",
+  "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+  "https://images.unsplash.com/photo-1560331470-4737e8408873?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  "https://images.unsplash.com/photo-1460533893735-45cea2212645?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
+  "https://images.unsplash.com/photo-1440539724152-082543aaa376?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80",
+  "https://images.unsplash.com/photo-1593959879500-6c353e8bd4ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80",
+  "https://images.unsplash.com/photo-1496843916299-590492c751f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80",
+  "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  "https://images.unsplash.com/photo-1544099421-9115a9ead243?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
+  "https://images.unsplash.com/photo-1580596692940-7bcefa004abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+]
+ %> 
+
+<% 
+  users = {
+    "Cindy" => "https://kitt.lewagon.com/placeholder/users/Cindywritescode",
+    "Daniella" => "https://kitt.lewagon.com/placeholder/users/Dan-Mog",
+    "Thomas" => "https://kitt.lewagon.com/placeholder/users/Break-Point",
+    "Emily" => "https://kitt.lewagon.com/placeholder/users/gibbs-em"
+  }
+%>
+
 <div class="container">
-
+  <%# Header Section %>
   <div class="garden-header">
-    <h2><%= @garden.title.capitalize %></h2>
-    <p><%= @garden.address %></p>
-    <p><%= @garden.price %></p>
-    <p><%= @garden.capacity %></p>
+    <h1><%= @garden.title %></h1>
+    <p id="address"><%= @garden.address %></p>
   </div>
 
-  <div class="garden-images">
-      <div class="grid-container">
-      <% if @garden.photo.attached? %>
-          <%= cl_image_tag @garden.photo.key, crop: :fill %>
-        <% else %>
-          <%= image_tag "backyard-default.jpg", crop: :fill %>
+  <%# Image Section %>
+  <div class="row masonry-grid m-1">
+    <div class="col-md-6 col-lg-6 masonry-column">
+      <div>
+        <% if @garden.photo.attached? %>
+            <%= cl_image_tag @garden.photo.key, height: 450, crop: :fill, class: "garden-image py-2 pl-2" %>
+          <% else %>
+            <%= image_tag "backyard-default.jpg", height: 450, crop: :fill, class: "garden-image py-2 pl-2"  %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-6 masonry-column">
+      <div class="d-flex flex-grow-0">
+        <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
+        <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
+      </div>
+      <div>
+        <%= image_tag secondary_images.sample, height: 245, crop: :fill, class: "garden-image px-2 pb-2"  %>
+      </div>
+    </div>
+  </div>
+
+  <%# Summary Section %>
+  <div class="d-flex">
+    <div>
+      <h3> <%= "Entire #{["garden","backyard","venue"].sample} hosted by" %> <%= @garden.user.name.capitalize %></h3>
+      <h4> £<%= @garden.price.round %> per day • up to <%= @garden.capacity %> people</h4>
+    </div>
+    
+    <%# Calc Avg Rating %>
+    <% sum = 0 %>
+    <% @garden.reviews.each do |review| %>
+      <% sum += review.rating %>
+    <% end %>
+    <span class="avg_rating ml-4">
+      <% if @garden.reviews.count > 0 %>
+        <h3> <%= "⭐ #{sum.fdiv(@garden.reviews.count)}" %> </h3>
+        <h4></h4>
+      <% else %>
+        <h3>⭐ No Ratings</h3>
+        <h4></h4>
       <% end %>
-      </div>
-      <div class="card-body">
-          <h3>Hosted by <%= @garden.user.name.capitalize %></h3>
-      </div>
-      <% if current_user == @garden.user %>
-        <div class="edit-delete">
-            <h3><%= link_to "Delete Garden",
+    </span>
+  
+    <%# User Avatar until we add it to the User model & Edit & Delete %>
+    <div class="d-flex align-items-center ml-auto">
+      <% if users.key?(@garden.user.name) %>
+        <%= image_tag users[@garden.user.name], class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar-large" %>
+      <% end %>
+      <div class="ml-3">
+        <% if current_user == @garden.user %>
+          <div class="edit-delete d-flex flex-column justify-content-between">
+            <h4>
+              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
               garden_path(@garden),
+              title: 'Delete this booking',
+              rel: 'tooltip',
               method: :delete,
-              data: { confirm: "Are you sure?" }%></h3>
-            <h3><%= link_to "Edit Garden", edit_garden_path %></h3>
-        </div>
-      <% end %>
+              data: { confirm: "Are you sure?" }%>
+            </h4>
+            <h4>
+              <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_garden_path, title: 'Edit this booking', rel: 'tooltip' %>
+            </h4>
+          </div>
+        <% end %> 
+      </div>
+    </div>
   </div>
 
-  <div class="features-and-form">
+  <%# Features and Booking From Section %>
+  <div class="features-and-form mt-5 d-flex flex-wrap">
     <div class="features">
-      <ul>
-        <% if @garden.bbq %><li>🔥 BBQ</li><% end %>
-        <% if @garden.peaceful %><li>✌ Peaceful</li><% end %>
-        <% if @garden.heater %><li>🥵 Heater</li><% end %>
-        <% if @garden.toilet %><li>🚽 Toilet</li><% end %>
-        <% if @garden.rain_shelter %><li>☔ Shelter</li><% end %>
-      </ul>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-toilet-paper p-auto"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.toilet %>">
+          <p>Outdoor Toilet</p>
+          <span>Toilet accessable from the garden.</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+
+        <div class="d-flex align-items-center"><i class="fas fa-umbrella"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.rain_shelter %>">
+          <p>Shelter</p>
+          <span>There is acces to shelter if the weather turns!</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-volume-mute"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.peaceful %>">
+          <p>Quiet Zone</p>
+          <span>This is a quiet zone venue, noise level will need to be controlled.</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-heading"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.heater %>">
+          <p>Heaters</p>
+          <span>This venue has heaters, or access to heaters. </span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-dumpster-fire"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.bbq %>">
+          <p>BBQ</p>
+          <span>This venue comes with a BBQ and designted BBQ area.</span>
+        </div>
+      </div>
     </div>
 
-    <div class="booking-form p-3 w-40">
+    <%# Booking Form %>
+    <div class="booking-form p-3 w-40 h-100 ml-auto">
+      <h3 class="mt-2">£<%= @garden.price.round %> / per day</h3>
       <%= simple_form_for [ @garden, @booking ] do |f| %>
-        <%= f.input :date %>
-        <%= f.submit "Make booking", class: "btn btn-primary" %>
+        <%= f.input :date, label: "Book this garden!" %>
+        <%= f.submit "Book", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
   </div>
 
+  <%# Full Description Section %>
   <div class="garden-description">
-    <p><%= @garden.description %></p>
+    <p><%= @garden.description %> Spacious venue, near central of London, which boasts an abundance of pubs, restaurants, cafes and independent shops.</p>
+    <p>You'll never be short of something to do near this great venue. If outdoor spaces are what you enjoy, don't miss Hyde Park, about 25 minute bus ride from the venue.</p>
+    <p>Additional service charges may have to be paid locally on-site, see venue rules and venue manual for details. Please don't hesitate to contact us should you have any questions. Thank you.</p>
     <hr size="8" width="95%" color="grey">
   </div>
 
+  <h3>Reviews</h3>
   <div class="card-columns reviews">
-    <h4>Reviews</h4>
     <% @garden.reviews.each do |review| %>
-    <div class="card p-3">
-      <blockquote class="blockquote mb-0 card-body">
-       <h2><%= review.title.capitalize %></h2>
-       <p><%= "⭐️" * review.rating %></p>
-       <p><%= review.description.capitalize %></p>
-        <footer class="blockquote-footer">
-          <small class="text-muted">
-            <cite title="Reviewer"><%= review.booking.user.name.capitalize %></cite>
-          </small>
-        </footer>
-      </blockquote>
-    </div>
+      <div class="card p-3">
+        <blockquote class="blockquote mb-0 card-body">
+        <h4><%= review.title.capitalize %></h4>
+        <span><%= review.description.capitalize %></span>
+        <p class="ml-auto"><%= "⭐️" * review.rating %></p>
+          <footer class="blockquote-footer">
+            <small class="text-muted">
+              <cite title="Reviewer"><%= review.booking.user.name.capitalize %></cite>
+            </small>
+          </footer>
+        </blockquote>
+      </div>
     <% end %>
   </div>
+
+</div>
