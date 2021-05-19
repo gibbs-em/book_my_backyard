@@ -26,14 +26,14 @@
             <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
         <% end %>
       
-      <div class="card-body ml-2">
+      <div class="card-body ml-4">
         <h5 class="card-title"><%= booking.garden.title %></h5>
         <p class="card-text">Booking date: <%= booking.date %></p>
         
         <%= link_to 'Detail'.html_safe, booking_path(booking), class: "btn btn-primary btn-rounded" %>
         
       </div>
-      
+
     </div>
   <% end %>
 </div>

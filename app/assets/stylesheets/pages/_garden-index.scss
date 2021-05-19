@@ -5,3 +5,11 @@
   position: sticky;
   top: 0;
 }
+
+.main-container {
+  display: flex;
+}
+
+.garden-cards {
+  flex-grow: 3 ;
+}
