@@ -288,6 +288,7 @@ email: #{emily.email}
 email: #{cindy.email}
 email: #{dani.email}
 email: #{thomas.email}
+email: #{colin.email}
 password: password
 *****************
 "
