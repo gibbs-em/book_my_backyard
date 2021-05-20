@@ -1,0 +1,4 @@
+<%= cl_image_tag garden.photo.key, crop: :fill, class: "card-img-top" %>
+<h3><%= link_to garden.title, garden_path(garden) %></h3>
+<h5>£<%= garden.price %> per visit</h5>
+
