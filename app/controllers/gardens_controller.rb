@@ -6,7 +6,8 @@ class GardensController < ApplicationController
     @markers = @gardens.geocoded.map do |garden|
       {
         lat: garden.latitude,
-        lng: garden.longitude
+        lng: garden.longitude,
+        info_window: render_to_string(partial: "info_window", locals: { garden: garden })
       }
     end
   end
@@ -60,7 +61,7 @@ class GardensController < ApplicationController
     params[:garden][:heater] ||= false
     params[:garden][:rain_shelter] ||= false
     params[:garden][:peaceful] ||= false
-    
+
     params.require(:garden).permit(:title, :description, :address, :postcode, :bbq, :toilet, :heater, :rain_shelter, :peaceful, :photo, :price, :capacity)
   end
 end
