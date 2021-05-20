@@ -144,7 +144,7 @@
     <div class="booking-form p-3 w-40 h-100 ml-auto">
       <h3 class="mt-2">£<%= @garden.price.round %> / per day</h3>
       <%= simple_form_for [ @garden, @booking ] do |f| %>
-        <%= f.input :date, label: "Book this garden!" %>
+        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", data: {dates: @garden.bookings.pluck(:date).reject(&:blank?)}}  %>
         <%= f.submit "Book", class: "btn btn-primary w-100" %>
       <% end %>
     </div>

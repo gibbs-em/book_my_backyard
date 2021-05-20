@@ -1,14 +1,9 @@
-<div class="container m-5">
-
-  <h1 class= "mb-5">All Gardens</h1>
-
-
-  <div class="main-container">
-    <%# --- Garden Cards --- %>
-    <div class="cards garden-cards row">
+<h1 class = 'm-5'>All Gardens</h1>
+<div class="d-flex">
+  <div class="cards d-flex flex-wrap ml-4">
       <% @gardens.each do |garden| %>
-      <div class="card card-rounded m-2" style="width: 10rem;">
-        
+      <div class="card card-rounded m-2" style="width: 15rem;">
+
           <% if garden.photo.attached? %>
               <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
             <% else %>
@@ -35,5 +30,3 @@
     </div>
 
   </div>
-
-</div>
