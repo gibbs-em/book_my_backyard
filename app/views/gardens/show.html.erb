@@ -1,70 +1,214 @@
+<div class="container">
+  <%# Header Section %>
   <div class="garden-header">
-    <h2><%= @garden.title.capitalize %></h2>
-    <p><%= @garden.address %></p>
-    <p><%= @garden.price %></p>
-    <p><%= @garden.capacity %></p>
+    <h1><%= @garden.title %></h1>
+    <p id="address"><%= @garden.address %></p>
   </div>
 
-  <div class="garden-images">
-      <div class="grid-container">
-      <% if @garden.photo.attached? %>
-          <%= cl_image_tag @garden.photo.key, crop: :fill %>
-        <% else %>
-          <%= image_tag "backyard-default.jpg", crop: :fill %>
-      <% end %>
+  <%# Image Section %>
+  <div class="row masonry-grid m-1">
+    <div class="col-md-6 col-lg-6 masonry-column">
+      <div>
+        <% if @garden.photo.attached? %>
+            <%= cl_image_tag @garden.photo.key, height: 450, crop: :fill, class: "garden-image py-2 pl-2" %>
+          <% else %>
+            <%= image_tag "backyard-default.jpg", height: 450, crop: :fill, class: "garden-image py-2 pl-2"  %>
+        <% end %>
       </div>
-      <div class="card-body">
-          <h3>Hosted by <%= @garden.user.name.capitalize %></h3>
+    </div>
+    <div class="col-md-6 col-lg-6 masonry-column">
+      <div class="d-flex flex-grow-0">
+        <%# Placeholder until we add has_many photos to the Garden Model %>
+        <% secondary_images = 
+          [
+          "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80",
+          "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1560331470-4737e8408873?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1460533893735-45cea2212645?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
+          "https://images.unsplash.com/photo-1440539724152-082543aaa376?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80",
+          "https://images.unsplash.com/photo-1593959879500-6c353e8bd4ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80",
+          "https://images.unsplash.com/photo-1496843916299-590492c751f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80",
+          "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1544099421-9115a9ead243?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
+          "https://images.unsplash.com/photo-1580596692940-7bcefa004abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+          ]
+        %> 
+        <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
+        <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
       </div>
-      <% if current_user == @garden.user %>
-        <div class="edit-delete">
-            <h3><%= link_to "Delete Garden",
-              garden_path(@garden),
-              method: :delete,
-              data: { confirm: "Are you sure?" }%></h3>
-            <h3><%= link_to "Edit Garden", edit_garden_path %></h3>
+      <div>
+        <%= image_tag secondary_images.sample, height: 245, crop: :fill, class: "garden-image px-2 pb-2"  %>
+      </div>
+    </div>
+  </div>
+
+  <%# Summary Section %>
+  <div class="d-flex">
+    <div>
+      <h3> <%= "Entire #{["garden","backyard","venue"].sample} hosted by" %> <%= @garden.user.name.capitalize %></h3>
+      <h4> £<%= @garden.price.round %> per day • up to <%= @garden.capacity %> people</h4>
+    </div>
+    
+    <%# Avg Rating Section %>
+    <span class="avg_rating ml-4">
+      <% if @garden.reviews.count > 0 %>
+        <div class="d-flex align-items-center">
+          <h3> <%= "⭐ #{@garden.reviews.average(:rating)}" %></h3>
+          <span class="ml-2 mb-2" id="no_reviews">(<%= @garden.reviews.count %> reviews)</span>
         </div>
+        <h4></h4>
+      <% else %>
+        <h3>⭐ No Ratings</h3>
+        <h4></h4>
       <% end %>
+    </span>
+  
+    <%# User Avatar until we add it to the User model & Edit & Delete %>
+    <div class="d-flex align-items-center ml-auto">
+      <%# Placeholder unitl we add Avatar to the User Model %>
+      <% users = 
+        {
+          "Cindy" => "https://kitt.lewagon.com/placeholder/users/Cindywritescode",
+          "Daniella" => "https://kitt.lewagon.com/placeholder/users/Dan-Mog",
+          "Thomas" => "https://kitt.lewagon.com/placeholder/users/Break-Point",
+          "Emily" => "https://kitt.lewagon.com/placeholder/users/gibbs-em"
+        } 
+      %>
+      <% if users.key?(@garden.user.name) %>
+        <%= image_tag users[@garden.user.name], class: "avatar-large" %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar-large" %>
+      <% end %>
+      <div class="ml-3">
+        <% if current_user == @garden.user %>
+          <div class="edit-delete d-flex flex-column justify-content-between">
+            <h4>
+              <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe,
+              garden_path(@garden),
+              title: 'Delete this booking',
+              rel: 'tooltip',
+              method: :delete,
+              data: { confirm: "Are you sure?" }%>
+            </h4>
+            <h4>
+              <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_garden_path, title: 'Edit this booking', rel: 'tooltip' %>
+            </h4>
+          </div>
+        <% end %> 
+      </div>
+    </div>
   </div>
 
-  <div class="features-and-form">
+  <%# Features and Booking From Section %>
+  <div class="features-and-form mt-5 d-flex flex-wrap">
     <div class="features">
-      <ul>
-        <% if @garden.bbq %><li>🔥 BBQ</li><% end %>
-        <% if @garden.peaceful %><li>✌ Peaceful</li><% end %>
-        <% if @garden.heater %><li>🥵 Heater</li><% end %>
-        <% if @garden.toilet %><li>🚽 Toilet</li><% end %>
-        <% if @garden.rain_shelter %><li>☔ Shelter</li><% end %>
-      </ul>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-toilet-paper p-auto"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.toilet %>">
+          <p>Outdoor Toilet</p>
+          <span>Toilet accessable from the garden.</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+
+        <div class="d-flex align-items-center"><i class="fas fa-umbrella"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.rain_shelter %>">
+          <p>Shelter</p>
+          <span>There is acces to shelter if the weather turns!</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-volume-mute"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.peaceful %>">
+          <p>Quiet Zone</p>
+          <span>This is a quiet zone venue, noise level will need to be controlled.</span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-heading"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.heater %>">
+          <p>Heaters</p>
+          <span>This venue has heaters, or access to heaters. </span>
+        </div>
+      </div>
+      <div class="feature ml-5 mb-4 d-flex">
+        <div class="d-flex align-items-center"><i class="fas fa-dumpster-fire"></i></div>
+        <div class="ml-3" id="<%= 'strike' unless @garden.bbq %>">
+          <p>BBQ</p>
+          <span>This venue comes with a BBQ and designted BBQ area.</span>
+        </div>
+      </div>
     </div>
 
-    <div class="booking-form p-3 w-40">
+    <%# Booking Form %>
+    <div class="booking-form p-3 w-40 h-100 ml-auto">
+      <h3 class="mt-2">£<%= @garden.price.round %> / per day</h3>
       <%= simple_form_for [ @garden, @booking ] do |f| %>
         <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", data: {dates: @garden.bookings.pluck(:date).reject(&:blank?)}}  %>
-        <%= f.submit "Make booking", class: "btn btn-primary" %>
+        <%= f.submit "Book", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
   </div>
 
+  <%# Full Description Section %>
   <div class="garden-description">
-    <p><%= @garden.description %></p>
-    <hr size="8" width="95%" color="grey">
+    <p><%= @garden.description %> Spacious venue, near central of London, which boasts an abundance of pubs, restaurants, cafes and independent shops.</p>
+    <p>You'll never be short of something to do near this great venue. If outdoor spaces are what you enjoy, don't miss Hyde Park, about 25 minute bus ride from the venue.</p>
+    <p>Additional service charges may have to be paid locally on-site, see venue rules and venue manual for details. Please don't hesitate to contact us should you have any questions. Thank you.</p>
   </div>
 
+  <%# Reviews Section %>
+  <hr size="8" width="95%" color="grey">
+  <h3>Reviews</h3>
   <div class="card-columns reviews">
-    <h4>Reviews</h4>
     <% @garden.reviews.each do |review| %>
-    <div class="card p-3">
-      <blockquote class="blockquote mb-0 card-body">
-       <h2><%= review.title.capitalize %></h2>
-       <p><%= "⭐️" * review.rating %></p>
-       <p><%= review.description.capitalize %></p>
-        <footer class="blockquote-footer">
-          <small class="text-muted">
-            <cite title="Reviewer"><%= review.booking.user.name.capitalize %></cite>
-          </small>
-        </footer>
-      </blockquote>
-    </div>
+      <div class="card p-3">
+        <blockquote class="blockquote mb-0">
+          <div class="review-title d-flex align-items-center mb-3">
+            <h3><%= review.title %></h3>
+            <% reviewer_name = User.find(review.booking.user_id).name %>
+            <% if users.key?(reviewer_name) %>
+              <%= image_tag users[reviewer_name], class: "avatar ml-auto" %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar ml-auto" %>
+            <% end %>
+          </div>
+          <span><%= review.description %></span>
+          <div class="review-footer d-flex align-items-center mt-2">
+            <div class="blockquote-footer">
+              <small class="text-muted">
+                <cite title="Reviewer"><%= review.booking.user.name %></cite>
+              </small>
+            </div>
+            <span class="ml-auto"><%= "⭐️" * review.rating %></span>
+          </div>
+        </blockquote>
+      </div>
     <% end %>
   </div>
+
+  <%# Things to know Section %>
+  <hr size="8" width="95%" color="grey">
+  <div class="things mt-4">
+    <div class="d-flex justify-content-around">
+      <div class="w-25">
+        <h3>Garden rules</h3>
+        <p>Check-in: 1:00 - 14:00</p>
+        <p>Check out: 23:59</p>
+        <p>No smoking</p>
+        <p>Pets are allowed</p>
+      </div>
+      <div class="w-25">
+        <h3>Health & safety</h3>
+        <p>Committed to Backyard's enhanced cleaning process</p>
+        <p>Backyard's social distancing and other COVID-19-related guidelines apply</p>
+        <p>Carbon monoxide alarm not reported</p>
+        <p>Smoke alarm not reported</p>
+      </div>
+      <div class="w-25">
+        <h3>Cancellation policy</h3>
+        <p>Add your dates to get the cancellation details for this stay.</p>
+      </div>
+    </div>
+  </div>
+</div>
