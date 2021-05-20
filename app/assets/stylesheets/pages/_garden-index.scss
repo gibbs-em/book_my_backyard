@@ -1,0 +1,15 @@
+// MAP
+
+#map {
+  height: 100vh;  /*view height*/
+  position: sticky;
+  top: 0;
+}
+
+.main-container {
+  display: flex;
+}
+
+.garden-cards {
+  flex-grow: 3 ;
+}
