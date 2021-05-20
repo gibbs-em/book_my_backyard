@@ -155,14 +155,15 @@
     <p><%= @garden.description %> Spacious venue, near central of London, which boasts an abundance of pubs, restaurants, cafes and independent shops.</p>
     <p>You'll never be short of something to do near this great venue. If outdoor spaces are what you enjoy, don't miss Hyde Park, about 25 minute bus ride from the venue.</p>
     <p>Additional service charges may have to be paid locally on-site, see venue rules and venue manual for details. Please don't hesitate to contact us should you have any questions. Thank you.</p>
-    <hr size="8" width="95%" color="grey">
   </div>
 
+  <%# Reviews Section %>
+  <hr size="8" width="95%" color="grey">
   <h3>Reviews</h3>
   <div class="card-columns reviews">
     <% @garden.reviews.each do |review| %>
       <div class="card p-3">
-        <blockquote class="blockquote mb-0 card-body">
+        <blockquote class="blockquote mb-0">
           <div class="review-title d-flex align-items-center mb-3">
             <h3><%= review.title %></h3>
             <% reviewer_name = User.find(review.booking.user_id).name %>
@@ -174,15 +175,40 @@
           </div>
           <span><%= review.description %></span>
           <div class="review-footer d-flex align-items-center mt-2">
-            <footer class="blockquote-footer">
+            <div class="blockquote-footer">
               <small class="text-muted">
                 <cite title="Reviewer"><%= review.booking.user.name %></cite>
               </small>
-            </footer>
+            </div>
             <span class="ml-auto"><%= "⭐️" * review.rating %></span>
           </div>
         </blockquote>
       </div>
     <% end %>
+  </div>
+
+  <%# Things to know Section %>
+  <hr size="8" width="95%" color="grey">
+  <div class="things mt-4">
+    <div class="d-flex justify-content-around">
+      <div class="w-25">
+        <h3>Garden rules</h3>
+        <p>Check-in: 1:00 - 14:00</p>
+        <p>Check out: 23:59</p>
+        <p>No smoking</p>
+        <p>Pets are allowed</p>
+      </div>
+      <div class="w-25">
+        <h3>Health & safety</h3>
+        <p>Committed to Backyard's enhanced cleaning process</p>
+        <p>Backyard's social distancing and other COVID-19-related guidelines apply</p>
+        <p>Carbon monoxide alarm not reported</p>
+        <p>Smoke alarm not reported</p>
+      </div>
+      <div class="w-25">
+        <h3>Cancellation policy</h3>
+        <p>Add your dates to get the cancellation details for this stay.</p>
+      </div>
+    </div>
   </div>
 </div>
