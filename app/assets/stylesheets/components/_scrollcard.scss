@@ -14,11 +14,9 @@
   height: 60vh;
 
   .scrollcard {
-    height: 20vh;
     min-width: 20em;
     margin-right: 1em;
     background-color: white;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;;
     &:last-child {
       margin-right: 0;
     }
