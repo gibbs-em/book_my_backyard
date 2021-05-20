@@ -1,4 +1,27 @@
 footer {
-  height: 15vh;
-  background-color: #00917C
+  background-color: #35495E;
+  padding: 16px 0px 16px 0px;
+  .footer-link {
+    color: white;
+    text-decoration: none;
+    margin: 0px 8px 0px 8px;
+  }
+  cite {
+    color: white;
+    margin: auto;
+  }
+
+  .breakline {
+    width: 100%;
+    height: 1px;
+    background-color: white;
+    margin-bottom: 8px
+  }
+
+  .site-info {
+    display: flex;
+  }
+  ul {
+    display: flex;
+  }
 }
