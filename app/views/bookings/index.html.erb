@@ -11,17 +11,14 @@
   <li class="nav-item">
     <a class="nav-link" href="#">Past</a>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Cancelled</a>
-  </li>
  
 </ul>
 
+<%# --- Cards %>
+<div class="cards row">
 
-<div class="cards d-flex justify-content-center align-content-stretch flex-wrap">
   <% @bookings.each do |booking| %>
-    <div class="card  m-2" style="width: 18rem;">
-      <%# <img class="card-img-top" src="..." alt="Card image cap"> %>
+    <div class="card card-rounded m-2" style="width: 18rem;">
       
        <% if booking.garden.photo.attached? %>
             <%= cl_image_tag booking.garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
@@ -29,11 +26,14 @@
             <%= image_tag "backyard-default.jpg", height: 180, crop: :fill, class: "card-img-top" %>
         <% end %>
       
-      <div class="card-body">
+      <div class="card-body ml-4">
         <h5 class="card-title"><%= booking.garden.title %></h5>
         <p class="card-text">Booking date: <%= booking.date %></p>
-        <%= link_to 'Detial'.html_safe, booking_path(booking), class: "btn btn-primary" %>
+        
+        <%= link_to 'Detail'.html_safe, booking_path(booking), class: "btn btn-primary btn-rounded" %>
+        
       </div>
+
     </div>
   <% end %>
 </div>
