@@ -1,7 +1,5 @@
-<div class="container">
-
 <h1 class = 'm-5'>All Gardens</h1>
-
+<div class="d-flex">
   <div class="cards d-flex justify-content-center align-content-stretch flex-wrap">
     <% @gardens.each do |garden| %>
       <div class="card m-2" style="width: 250px; height: 450px">
@@ -22,7 +20,8 @@
     <% end %>
   </div>
   <div id="map"
-       style="width: 100%; height: 600px;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 </div>
