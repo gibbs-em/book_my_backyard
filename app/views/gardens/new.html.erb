@@ -1,18 +1,26 @@
-<h1>Create your garden</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-m-8 align-items-center ">
+    
+    <h1>Create your garden</h1>
 
-<%= simple_form_for @garden do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :address %>
-  <%= f.input :price %>
-  <%= f.input :capacity %>
-  <%= f.input :photo, as: :file %>
-  <div class="features">
-    <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-    <%= f.input :bbq, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-    <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-    <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-    <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+    <%= simple_form_for @garden do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :address %>
+      <%= f.input :price %>
+      <%= f.input :capacity %>
+      <%= f.input :photo, as: :file %>
+      <div class="features">
+        <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+        <%= f.input :bbq, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+        <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+        <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+        <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+      </div>
+      <%= f.submit %>
+    <% end %>
+    </div>
   </div>
-  <%= f.submit %>
-<% end %>
+</div>
+
