@@ -243,7 +243,7 @@ puts "Review created: #{review1.title}"
 
 review2= Review.new(
   title: "So much fun",
-  description: "Venue is kitted out superbly - thank you!!! Can't beleive how easy this service was to book!",
+  description: "Venue is kitted out superbly - thank you!!! Can't believe how easy this service was to book!",
   rating: 4,
   booking_id: booking2.id
 )
@@ -260,8 +260,8 @@ review3.save!
 puts "Review created: #{review3.title}"
 
 review4 = Review.new(
-  title: "Always a great venue. Will be back",
-  description: "I only give 4 stars, because it was raining.",
+  title: "Always a great venue.",
+  description: "I only gave it 4 stars because it was raining.",
   rating: 4,
   booking_id: booking1.id
 )

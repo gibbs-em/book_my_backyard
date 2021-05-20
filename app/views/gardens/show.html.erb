@@ -66,7 +66,10 @@
     <% end %>
     <span class="avg_rating ml-4">
       <% if @garden.reviews.count > 0 %>
-        <h3> <%= "⭐ #{sum.fdiv(@garden.reviews.count)}" %> </h3>
+        <div class="d-flex align-items-center">
+          <h3> <%= "⭐ #{sum.fdiv(@garden.reviews.count)}" %></h3>
+          <span class="ml-2 mb-2" id="no_reviews">(<%= @garden.reviews.count %> reviews)</span>
+        </div>
         <h4></h4>
       <% else %>
         <h3>⭐ No Ratings</h3>
@@ -165,14 +168,24 @@
     <% @garden.reviews.each do |review| %>
       <div class="card p-3">
         <blockquote class="blockquote mb-0 card-body">
-        <h4><%= review.title.capitalize %></h4>
-        <span><%= review.description.capitalize %></span>
-        <p class="ml-auto"><%= "⭐️" * review.rating %></p>
-          <footer class="blockquote-footer">
-            <small class="text-muted">
-              <cite title="Reviewer"><%= review.booking.user.name.capitalize %></cite>
-            </small>
-          </footer>
+          <div class="review-title d-flex align-items-center mb-3">
+            <h3><%= review.title %></h3>
+            <% reviewer_name = User.find(review.booking.user_id).name %>
+            <% if users.key?(reviewer_name) %>
+              <%= image_tag users[reviewer_name], class: "avatar ml-auto" %>
+            <% else %>
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar ml-auto" %>
+            <% end %>
+          </div>
+          <span><%= review.description %></span>
+          <div class="review-footer d-flex align-items-center mt-2">
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                <cite title="Reviewer"><%= review.booking.user.name %></cite>
+              </small>
+            </footer>
+            <span class="ml-auto"><%= "⭐️" * review.rating %></span>
+          </div>
         </blockquote>
       </div>
     <% end %>
