@@ -1,28 +1,3 @@
-
-<% 
- secondary_images = [
-  "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80",
-  "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
-  "https://images.unsplash.com/photo-1560331470-4737e8408873?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-  "https://images.unsplash.com/photo-1460533893735-45cea2212645?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
-  "https://images.unsplash.com/photo-1440539724152-082543aaa376?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80",
-  "https://images.unsplash.com/photo-1593959879500-6c353e8bd4ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80",
-  "https://images.unsplash.com/photo-1496843916299-590492c751f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80",
-  "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-  "https://images.unsplash.com/photo-1544099421-9115a9ead243?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
-  "https://images.unsplash.com/photo-1580596692940-7bcefa004abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-]
- %> 
-
-<% 
-  users = {
-    "Cindy" => "https://kitt.lewagon.com/placeholder/users/Cindywritescode",
-    "Daniella" => "https://kitt.lewagon.com/placeholder/users/Dan-Mog",
-    "Thomas" => "https://kitt.lewagon.com/placeholder/users/Break-Point",
-    "Emily" => "https://kitt.lewagon.com/placeholder/users/gibbs-em"
-  }
-%>
-
 <div class="container">
   <%# Header Section %>
   <div class="garden-header">
@@ -43,6 +18,21 @@
     </div>
     <div class="col-md-6 col-lg-6 masonry-column">
       <div class="d-flex flex-grow-0">
+        <%# Placeholder until we add has_many photos to the Garden Model %>
+        <% secondary_images = 
+          [
+          "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80",
+          "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1560331470-4737e8408873?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1460533893735-45cea2212645?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80",
+          "https://images.unsplash.com/photo-1440539724152-082543aaa376?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1189&q=80",
+          "https://images.unsplash.com/photo-1593959879500-6c353e8bd4ea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=967&q=80",
+          "https://images.unsplash.com/photo-1496843916299-590492c751f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80",
+          "https://images.unsplash.com/photo-1591035897819-f4bdf739f446?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+          "https://images.unsplash.com/photo-1544099421-9115a9ead243?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
+          "https://images.unsplash.com/photo-1580596692940-7bcefa004abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+          ]
+        %> 
         <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
         <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
       </div>
@@ -59,15 +49,11 @@
       <h4> £<%= @garden.price.round %> per day • up to <%= @garden.capacity %> people</h4>
     </div>
     
-    <%# Calc Avg Rating %>
-    <% sum = 0 %>
-    <% @garden.reviews.each do |review| %>
-      <% sum += review.rating %>
-    <% end %>
+    <%# Avg Rating Section %>
     <span class="avg_rating ml-4">
       <% if @garden.reviews.count > 0 %>
         <div class="d-flex align-items-center">
-          <h3> <%= "⭐ #{sum.fdiv(@garden.reviews.count)}" %></h3>
+          <h3> <%= "⭐ #{@garden.reviews.average(:rating)}" %></h3>
           <span class="ml-2 mb-2" id="no_reviews">(<%= @garden.reviews.count %> reviews)</span>
         </div>
         <h4></h4>
@@ -79,6 +65,15 @@
   
     <%# User Avatar until we add it to the User model & Edit & Delete %>
     <div class="d-flex align-items-center ml-auto">
+      <%# Placeholder unitl we add Avatar to the User Model %>
+      <% users = 
+        {
+          "Cindy" => "https://kitt.lewagon.com/placeholder/users/Cindywritescode",
+          "Daniella" => "https://kitt.lewagon.com/placeholder/users/Dan-Mog",
+          "Thomas" => "https://kitt.lewagon.com/placeholder/users/Break-Point",
+          "Emily" => "https://kitt.lewagon.com/placeholder/users/gibbs-em"
+        } 
+      %>
       <% if users.key?(@garden.user.name) %>
         <%= image_tag users[@garden.user.name], class: "avatar-large" %>
       <% else %>
@@ -190,5 +185,4 @@
       </div>
     <% end %>
   </div>
-
 </div>
