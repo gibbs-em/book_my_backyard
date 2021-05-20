@@ -1,0 +1,40 @@
+.favourite-gardens {
+  padding: 24px 8px 24px 8px;
+  margin: 24px;
+  h2 {
+    padding-bottom: 16px;
+  }
+}
+
+.cards-wrapper {
+  grid-column: center-start / -1;
+  overflow: auto;
+  display: flex;
+  padding-bottom: 1em;
+  height: 60vh;
+
+  .scrollcard {
+    height: 20vh;
+    min-width: 20em;
+    margin-right: 1em;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &::after {
+    display: block;
+    min-width: var(--page-margin);
+  }
+
+  .card-body {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    position: relative;
+    top: 0;
+    transition: top ease 0.5s;
+  }
+}

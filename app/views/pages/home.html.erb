@@ -1,121 +1,48 @@
-<div class="hero-flex">
-  <div class="hero-text">
-    <h1>Book my Backyard</h1>
-    <h3>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</h3>
-    <div class="button"><%= link_to "Find a backyard", gardens_path, class:"cta" %></div>
-    </div>
-  <%= image_tag "homepage-hero.png", crop: :fill, class: "hero-img" %>
-</div>
-<div class="card-columns">
-  <div class="card garden">
-    <% gardenOne = @gardens.sample %>
-    <% if gardenOne.photo.attached? %>
-        <%= cl_image_tag gardenOne.photo.key, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
-    <% end %>
-  <div class="card-body">
-    <h5 class="card-title"><%= gardenOne.title %></h5>
-    <p class="card-text"><%= gardenOne.description %></p>
-    <p class="card-text"><small class="text-muted"><%= gardenOne.address %></small></p>
-  </div>
-</div>
-  <div class="card p-3">
-    <blockquote class="blockquote mb-0 card-body">
-    <% reviewOne = @reviews.sample %>
-      <p><%= reviewOne.description.capitalize %></p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          <cite title="Reviewer"><%= reviewOne.booking.user.name.capitalize %></cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card garden">
-    <% gardenTwo = @gardens.sample %>
-    <% if gardenTwo.photo.attached? %>
-          <%= cl_image_tag gardenTwo.photo.key, crop: :fill, class: "card-img-top" %>
-        <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
-      <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= gardenTwo.title %></h5>
-      <p class="card-text"><%= gardenTwo.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenTwo.address %></small></p>
-    </div>
-  </div>
-  <div class="card text-center p-3">
-    <blockquote class="blockquote mb-0">
-    <% reviewTwo = @reviews.sample %>
-      <p><%= reviewTwo.description.capitalize %></p>
-      <footer class="blockquote-footer">
-        <small>
-          <cite title="Reviewer"><%= reviewTwo.booking.user.name.capitalize %></cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card garden">
-    <% gardenThree = @gardens.sample %>
-    <% if gardenThree.photo.attached? %>
-        <%= cl_image_tag gardenThree.photo.key, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
-    <% end %>
-      <div class="card-body">
-        <h5 class="card-title"><%= gardenThree.title %></h5>
-        <p class="card-text"><%= gardenThree.description %></p>
-        <p class="card-text"><small class="text-muted"><%= gardenThree.address %></small></p>
+  <div class="hero-flex">
+    <div class="hero-text">
+      <h1>Book my Backyard</h1>
+      <h3>We know it can be tough to find the space to socialise, exercise or just relax in London. Book my backyard allows you to book private gardens, patios and terraces so you can find the perfect escape right on your doorstep.</h3>
+      <div class="button"><%= link_to "Find a backyard", gardens_path, class:"cta" %></div>
       </div>
+    <%= image_tag "homepage-hero.png", crop: :fill, class: "hero-img" %>
   </div>
-  <div class="card garden">
-    <% gardenFour = @gardens.sample %>
-    <% if gardenFour.photo.attached? %>
-        <%= cl_image_tag gardenFour.photo.key, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
+
+    <div class="favourite-gardens">
+    <h2>Our favourite gardens this month</h2>
+    <div class="cards-wrapper">
+    <% @gardens.each do |garden| %>
+        <div class="card scrollcard" style="width: 18rem;">
+          <%= cl_image_tag garden.photo.key, crop: :fill, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= garden.title %></h5>
+            <p class="card-text"><%= garden.description %></p>
+            <a href="#" class="btn btn-primary">See more</a>
+          </div>
+        </div>
     <% end %>
-       <div class="card-body">
-         <h5 class="card-title"><%= gardenFour.title %></h5>
-         <p class="card-text"><%= gardenFour.description %></p>
-         <p class="card-text"><small class="text-muted"><%= gardenFour.address %></small></p>
-       </div>
-  </div>
-  <div class="card garden">
-    <% gardenFive = @gardens.sample %>
-    <% if gardenFive.photo.attached? %>
-        <%= cl_image_tag gardenFive.photo.key, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= gardenFive.title %></h5>
-      <p class="card-text"><%= gardenFive.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenFive.address %></small></p>
+      </div>
     </div>
-  </div>
-  <div class="card garden">
-    <% gardenSix = @gardens.sample %>
-    <% if gardenSix.photo.attached? %>
-        <%= cl_image_tag gardenSix.photo.key, crop: :fill, class: "card-img-top" %>
-      <% else %>
-        <%= image_tag "backyard-default.jpg", crop: :fill, class: "card-img-top" %>
-    <% end %>
-    <div class="card-body">
-      <h5 class="card-title"><%= gardenSix.title %></h5>
-      <p class="card-text"><%= gardenSix.description %></p>
-      <p class="card-text"><small class="text-muted"><%= gardenSix.address %></small></p>
+  <div class="quotes">
+    <h2>What our users are saying</h2>
+      <% reviewOne = @reviews.sample %>
+      <div class="quote">
+        <h4><%= reviewOne.description.capitalize %></h4>
+          <small class="text-muted">
+            <cite title="Reviewer"><%= reviewOne.booking.user.name.capitalize %></cite>
+          </small>
+      </div>
+      <div class="quote">
+      <% reviewTwo = @reviews.sample %>
+        <h4><%= reviewTwo.description.capitalize %></h4>
+          <small class="text-muted">
+            <cite title="Reviewer"><%= reviewTwo.booking.user.name.capitalize %></cite>
+          </small>
+      </div>
+      <div class="quote">
+      <% reviewThree = @reviews.sample %>
+        <h4><%= reviewThree.description.capitalize %></h4>
+          <small class="text-muted">
+            <cite title="Reviewer"><%= reviewThree.booking.user.name.capitalize %></cite>
+          </small>
     </div>
-  </div>
-  <div class="card p-3 text-right">
-    <blockquote class="blockquote mb-0">
-    <% reviewThree = @reviews.sample %>
-      <p><%= reviewThree.description.capitalize %></p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          <cite title="Reviewer"><%= reviewThree.booking.user.name.capitalize %></cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-</div>
+    </div>
