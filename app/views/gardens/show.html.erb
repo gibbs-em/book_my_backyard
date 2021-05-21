@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pt-4 m-auto">
   <%# Header Section %>
   <div class="garden-header">
     <h1><%= @garden.title %></h1>
@@ -187,13 +187,30 @@
     <% end %>
   </div>
 
+  <%# Map %>
+  <hr size="8" width="95%" color="grey">
+  <div class="d-flex">
+    <div id="map-garden"
+        class="m-auto"
+        style="width: 80%; height: 60vh;"
+        data-marker="<%= @marker.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>  
+    <div class="ml-sm-3 w-20">
+      <h3>Getting around</h3>
+      <p class="pt-3">20 min tube on the central line</p>
+      <p class="pt-3">20 min bus from Waterloo Station</p>
+      <p class="pt-3">35-40 min walk though London</p>
+    </div>
+  </div>
+
   <%# Things to know Section %>
   <hr size="8" width="95%" color="grey">
   <div class="things mt-4">
     <div class="d-flex justify-content-around">
       <div class="w-25">
         <h3>Garden rules</h3>
-        <p>Check-in: 1:00 - 14:00</p>
+        <p>Check-in: 10:00 - 14:00</p>
         <p>Check out: 23:59</p>
         <p>No smoking</p>
         <p>Pets are allowed</p>
@@ -211,4 +228,35 @@
       </div>
     </div>
   </div>
+
+  <%# Host %>
+  <hr size="8" width="95%" color="grey">
+  <div class="host d-flex align-items-center">
+    <% if users.key?(@garden.user.name) %>
+      <%= image_tag users[@garden.user.name], class: "avatar-large ml-3" %>
+    <% else %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar-large ml-3" %>
+    <% end %>
+    <div>
+      <h3 class="mb-0 ml-3">Hosted by <%= @garden.user.name %></h3>
+      <h4 class="mb-0 ml-3 mt-2">Joined in <%= @garden.user.created_at.strftime("%B %Y") %></h4>
+    </div>
+  </div>
+  <div class="d-flex mt-4">
+    <div class="w-40 ml-3">
+      <h3>Your Host</h3>
+      <p><i class="fas fa-praying-hands" style="color: green;"></i>  <%= @garden.reviews.count %> Reviews <i class="fas fa-user-check" style="color: green;"></i> Identity verified <i class="fab fa-superpowers" style="color: green;"></i> Superhost</p>
+      <strong>During your stay</strong>
+      <p>We are only next door so if you need anything at all, whether it be a cup of sugar or some local knowledge just give us a knock or drop us a text.</p>
+      <strong><%= @garden.user.name %> is a <i class="fab fa-superpowers" style="color: green;"></i> Superhost</strong>
+      <p>Superhosts are experienced, highly rated hosts who are committed to providing great venues for guests.</p>
+    </div>
+    <div class="w-40 ml-3">
+      <p><strong>Response rate:</strong> 100%</p>
+      <p><strong>Response time:</strong> within an hour</p>
+      <form class="btn btn-secondary" method="post" action=<%= "mailto:#{@garden.user.email}?subject=#{@garden.title}&message=message" %>>Contact the host</form>
+      <p class="mt-3">To protect your payment, never transfer money or communicate outside of the BookMyBackYard website or app.</p>
+    </div>
+  </div>
+
 </div>
