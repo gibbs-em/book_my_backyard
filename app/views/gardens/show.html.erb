@@ -19,7 +19,7 @@
     <div class="col-md-6 col-lg-6 masonry-column">
       <div class="d-flex flex-grow-0">
         <%# Placeholder until we add has_many photos to the Garden Model %>
-        <% secondary_images = 
+        <% secondary_images =
           [
           "https://images.unsplash.com/photo-1444392061186-9fc38f84f726?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1052&q=80",
           "https://images.unsplash.com/photo-1490750967868-88aa4486c946?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
@@ -32,7 +32,7 @@
           "https://images.unsplash.com/photo-1544099421-9115a9ead243?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80",
           "https://images.unsplash.com/photo-1580596692940-7bcefa004abf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
           ]
-        %> 
+        %>
         <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
         <%= image_tag secondary_images.sample, height: 200, crop: :fill, class: "garden-image-2 p-2"  %>
       </div>
@@ -48,7 +48,7 @@
       <h3> <%= "Entire #{["garden","backyard","venue"].sample} hosted by" %> <%= @garden.user.name.capitalize %></h3>
       <h4> £<%= @garden.price.round %> per day • up to <%= @garden.capacity %> people</h4>
     </div>
-    
+
     <%# Avg Rating Section %>
     <span class="avg_rating ml-4">
       <% if @garden.reviews.count > 0 %>
@@ -62,17 +62,17 @@
         <h4></h4>
       <% end %>
     </span>
-  
+
     <%# User Avatar until we add it to the User model & Edit & Delete %>
     <div class="d-flex align-items-center ml-auto">
       <%# Placeholder unitl we add Avatar to the User Model %>
-      <% users = 
+      <% users =
         {
           "Cindy" => "https://kitt.lewagon.com/placeholder/users/Cindywritescode",
           "Daniella" => "https://kitt.lewagon.com/placeholder/users/Dan-Mog",
           "Thomas" => "https://kitt.lewagon.com/placeholder/users/Break-Point",
           "Emily" => "https://kitt.lewagon.com/placeholder/users/gibbs-em"
-        } 
+        }
       %>
       <% if users.key?(@garden.user.name) %>
         <%= image_tag users[@garden.user.name], class: "avatar-large" %>
@@ -94,7 +94,7 @@
               <%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_garden_path, title: 'Edit this booking', rel: 'tooltip' %>
             </h4>
           </div>
-        <% end %> 
+        <% end %>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@
   <div class="features-and-form mt-5 d-flex flex-wrap">
     <div class="features">
       <div class="feature ml-5 mb-4 d-flex">
-        <div class="d-flex align-items-center"><i class="fas fa-toilet-paper p-auto"></i></div>
+        <div class="d-flex align-items-center"><i class="fas fa-toilet-paper p-auto" id="<%= 'strike' unless @garden.toilet %>"></i></div>
         <div class="ml-3" id="<%= 'strike' unless @garden.toilet %>">
           <p>Outdoor Toilet</p>
           <span>Toilet accessable from the garden.</span>
@@ -111,28 +111,28 @@
       </div>
       <div class="feature ml-5 mb-4 d-flex">
 
-        <div class="d-flex align-items-center"><i class="fas fa-umbrella"></i></div>
+        <div class="d-flex align-items-center"><i class="fas fa-umbrella" id="<%= 'strike' unless @garden.rain_shelter %>"></i></div>
         <div class="ml-3" id="<%= 'strike' unless @garden.rain_shelter %>">
           <p>Shelter</p>
           <span>There is acces to shelter if the weather turns!</span>
         </div>
       </div>
       <div class="feature ml-5 mb-4 d-flex">
-        <div class="d-flex align-items-center"><i class="fas fa-volume-mute"></i></div>
+        <div class="d-flex align-items-center"><i class="fas fa-volume-mute" id="<%= 'strike' unless @garden.peaceful %>"></i></div>
         <div class="ml-3" id="<%= 'strike' unless @garden.peaceful %>">
           <p>Quiet Zone</p>
           <span>This is a quiet zone venue, noise level will need to be controlled.</span>
         </div>
       </div>
       <div class="feature ml-5 mb-4 d-flex">
-        <div class="d-flex align-items-center"><i class="fas fa-heading"></i></div>
+        <div class="d-flex align-items-center"><i class="fas fa-heading" id="<%= 'strike' unless @garden.heater %>"></i></div>
         <div class="ml-3" id="<%= 'strike' unless @garden.heater %>">
           <p>Heaters</p>
           <span>This venue has heaters, or access to heaters. </span>
         </div>
       </div>
       <div class="feature ml-5 mb-4 d-flex">
-        <div class="d-flex align-items-center"><i class="fas fa-dumpster-fire"></i></div>
+        <div class="d-flex align-items-center"><i class="fas fa-dumpster-fire" id="<%= 'strike' unless @garden.bbq %>"></i></div>
         <div class="ml-3" id="<%= 'strike' unless @garden.bbq %>">
           <p>BBQ</p>
           <span>This venue comes with a BBQ and designted BBQ area.</span>
