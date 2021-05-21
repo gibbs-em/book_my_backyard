@@ -15,7 +15,7 @@
           <div class="card-body card-body-bottom ml-3">
             <h5 class="card-title divider"> <%= garden.title %> </h5>
             <p class="card-text"> Fit: <%= garden.capacity %> people </p>
-            <p class="card-text" style="margin-bottom:10px;"> £<%= garden.price.round %> /day </p>
+            <p class="card-text" style="margin-bottom:10px;"><strong> £<%= garden.price.round %></strong> /day </p>
             <p class="card-text text-truncate text-black-50"> <%= garden.description%></p>
             <%= link_to "Details", garden_path(garden), class: "btn btn-outline-primary btn-rounded text-center btn-bottom" %>
           </div>
