@@ -4,7 +4,7 @@
   <div class="cards d-flex flex-wrap ml-4">
       <%# --- Garden Cards --- %>
       <% @gardens.each do |garden| %>
-      <div class="card card-rounded mx-2 mb-3" style="width: 15rem;">
+      <div class="card card-rounded mx-2 mb-3" style="width: 13rem;">
 
           <% if garden.photo.attached? %>
               <%= cl_image_tag garden.photo.key, height: 180, crop: :fill, class: "card-img-top" %>
