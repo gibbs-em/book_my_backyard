@@ -18,7 +18,7 @@
           <div class="card-body">
             <h5 class="card-title"><%= garden.title %></h5>
             <p class="card-text"><%= garden.description %></p>
-            <a href="#" class="btn btn-primary">See more</a>
+            <%= link_to "See more", garden_path(garden.id), class: "btn btn-primary" %>
           </div>
         </div>
     <% end %>
