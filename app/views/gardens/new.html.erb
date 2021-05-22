@@ -2,36 +2,36 @@
   <div class="row justify-content-center">
     <div class="col-m-8 ">
     
-      <div class="garden-new-form p-5" >
-      <h1 > Create your garden</h1>
-      <p class="mb-5 text-secondary" >Rent your lovely garden any time you like.  </p>
-        <%= simple_form_for @garden do |f| %>
-          <%= f.input :title, label: 'Name', placeholder: 'Bob', input_html: { class: "input-rounded" } %>
-          <%= f.input :description, placeholder: 'enter your description here...', input_html: { class: "input-rounded" } %>
-          <%= f.input :address, placeholder: 'E2 8DY', input_html: { class: "input-rounded" }%>
-          <%= f.input :price, placeholder: '40', input_html: { class: "input-rounded" } %>
-          <%= f.input :capacity, placeholder: '2', input_html: { class: "input-rounded" } %>
-          <p>Facilities:</p>
-          <div class="d-flex justify-content-between features">
-            <div>
-            <span>
-            <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-            </span>
-            <%= f.input :bbq, label:'BBQ',  as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+      <div class="new-form p-5" >
+        <h1 > Create your garden</h1>
+        <p class="mb-5 text-secondary" >Rent your lovely garden any time you like.  </p>
+          <%= simple_form_for @garden do |f| %>
+            <%= f.input :title, label: 'Name', placeholder: 'Bob', input_html: { class: "input-rounded" } %>
+            <%= f.input :description, placeholder: 'enter your description here...', input_html: { class: "input-rounded" } %>
+            <%= f.input :address, placeholder: 'E2 8DY', input_html: { class: "input-rounded" }%>
+            <%= f.input :price, placeholder: '40', input_html: { class: "input-rounded" } %>
+            <%= f.input :capacity, placeholder: '2', input_html: { class: "input-rounded" } %>
+            <p style="color: #00917C; font-size: 32px;" >Features:</p>
+            <div class="d-flex justify-content-between features">
+              <div>
+              <span>
+              <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline, item_label_class: "form-small-text" %>
+              </span>
+              <%= f.input :bbq, label:'BBQ',  as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+              </div>
+              <div>
+              <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+              <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+              </div>
+              <div>
+              <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+              </div>
             </div>
-            <div>
-            <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-            <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
+            <div class="mb-5">
+              <%= f.input :photo, label: 'Add Photo:', as: :file %>
             </div>
-            <div>
-            <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
-            </div>
-          </div>
-          <div class="mb-5">
-            <%= f.input :photo, label: 'Add Photo:', as: :file %>
-          </div>
-          <%= f.submit "Create Garden", class: "btn btn-primary form-btn-rounded w-100 py-3" %>
-        <% end %>
+            <%= f.submit "Create Garden", class: "btn btn-primary form-btn-rounded w-100 py-3" %>
+          <% end %>
       </div>
 
     </div>
