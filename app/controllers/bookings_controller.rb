@@ -25,6 +25,7 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.where(user: current_user)
+    @past_bookings = Booking.where('date < ?', Date.today)
   end
 
   def destroy
@@ -44,6 +45,7 @@ class BookingsController < ApplicationController
     end
   end
 
+  
   private
 
   def set_booking
