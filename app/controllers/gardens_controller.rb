@@ -2,7 +2,12 @@ class GardensController < ApplicationController
   before_action :set_garden, only: [:edit, :update, :destroy]
 
   def index
-    @gardens = Garden.all
+    query = build_query
+    if query.blank?
+      @gardens = Garden.all
+    else
+      @gardens = Garden.where(query)
+    end
     @markers = @gardens.geocoded.map do |garden|
       {
         lat: garden.latitude,
@@ -48,6 +53,16 @@ class GardensController < ApplicationController
   end
 
   private
+
+  def build_query
+    query = []
+    query << "toilet = true" if params[:toilet]
+    query << "bbq = true" if params[:bbq]
+    query << "heater = true" if params[:heater]
+    query << "peaceful = true" if params[:peaceful]
+    query << "rain_shelter = true" if params[:rain_shelter]
+    query.join(" and ")
+  end
 
   def set_garden
     @garden = Garden.find(params[:id])
