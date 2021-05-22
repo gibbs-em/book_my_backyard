@@ -1,0 +1,34 @@
+.booking-info {
+  width: 50vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  h2 {
+    text-align: center;
+    padding-top: 16px;
+  }
+  .date-til {
+    text-align: center;
+  }
+}
+
+.booking-details {
+  margin: 24px 0px 24px 0px;
+}
+
+.rating {
+  fieldset {
+    display: flex;
+  }
+}
+
+fieldset {
+  .form-check {
+    margin-right: 16px;
+  }
+}
+
+.review-body {
+  margin: 24px
+}

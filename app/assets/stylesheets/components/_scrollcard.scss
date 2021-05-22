@@ -11,19 +11,19 @@
   overflow: auto;
   display: flex;
   padding-bottom: 1em;
-  height: 60vh;
 
   .scrollcard {
     min-width: 20em;
     margin-right: 1em;
     background-color: white;
+    // z-index: -1;
     &:last-child {
       margin-right: 0;
     }
   }
 
   &::after {
-    display: block;
+    // display: block;
     min-width: var(--page-margin);
   }
 
@@ -31,8 +31,12 @@
     background-color: white;
     padding: 20px;
     border-radius: 4px;
-    position: relative;
+    // position: relative;
     top: 0;
     transition: top ease 0.5s;
+  }
+
+  .card-text {
+    min-height: 10rem;
   }
 }
