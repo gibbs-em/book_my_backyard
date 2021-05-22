@@ -3,23 +3,23 @@
     <div class="col-m-8 ">
     
       <div class="booking-form p-5" >
-      <h1 class="m-1"> Create your garden</h1>
+      <h1 class="mb-5"> Create your garden</h1>
         <%= simple_form_for @garden do |f| %>
           <%= f.input :title %>
           <%= f.input :description %>
           <%= f.input :address %>
           <%= f.input :price %>
           <%= f.input :capacity %>
-          <%= f.input :photo, as: :file %>
+          <p>Facilities:</p>
           <div class="d-flex justify-content-between features">
-
             <%= f.input :toilet, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
             <%= f.input :bbq, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
             <%= f.input :rain_shelter, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
             <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
             <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
           </div>
-          <%= f.submit "Create Garden", class: "btn btn-primary w-100" %>
+          <%= f.input :photo, as: :file %>
+          <%= f.submit "Create Garden", class: "btn btn-primary btn-rounded w-100 py-3" %>
         <% end %>
       </div>
 
