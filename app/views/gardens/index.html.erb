@@ -1,4 +1,31 @@
 <h1 class = 'm-5'>All Gardens</h1>
+
+<div class="d-flex">
+      <%= form_tag gardens_path, method: :get do %>
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          <%= check_box_tag 'toilet', '1', false,  class: "checkbox"%>
+          <i class="fas fa-toilet-paper p-auto"></i>
+        </label>
+        <label>
+          <%= check_box_tag 'bbq', '1', false, class: "checkbox" %>
+          <i class="fas fa-dumpster-fire"></i>
+        </label>
+        <label>
+          <%= check_box_tag 'heater', '1', false, class: "checkbox" %>
+          <i class="fas fa-heading"></i>
+        </label>
+        <label>
+          <%= check_box_tag 'peaceful', '1', false, class: "checkbox" %>
+          <i class="fas fa-volume-mute"></i>
+        </label>
+        <label>
+          <%= check_box_tag 'rain_shelter', '1', false, class: "checkbox" %>
+          <i class="fas fa-umbrella"></i>
+        </label>
+        <%= submit_tag "Search by Feature", class: "btn btn-primary" %>
+      <% end %>
+  </div>
+
 <div class="d-flex">
 
   <div class="cards d-flex flex-wrap ml-4">
