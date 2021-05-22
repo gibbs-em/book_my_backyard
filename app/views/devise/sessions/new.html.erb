@@ -1,3 +1,7 @@
+<div class="container mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-m-8 ">
+
 <h2>Log in</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -5,7 +9,8 @@
     <%= f.input :email,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email" }, 
+                placeholder: 'bob@gmail.com' %>
     <%= f.input :password,
                 required: false,
                 input_html: { autocomplete: "current-password" } %>
@@ -18,3 +23,7 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+</div>
+</div>
