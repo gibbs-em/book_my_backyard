@@ -20,6 +20,12 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @booking = Booking.new
+
+    @marker = {
+                  lat: @garden.latitude,
+                  lng: @garden.longitude,
+                  info_window: render_to_string(partial: "info_window", locals: { garden: @garden })
+                }
   end
 
   def new
