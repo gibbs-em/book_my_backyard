@@ -30,5 +30,9 @@ fieldset {
 }
 
 .review-body {
-  margin: 24px
+  margin: 24px;
+  label {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px
+  }
 }

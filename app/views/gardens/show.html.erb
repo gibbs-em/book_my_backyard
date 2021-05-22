@@ -54,7 +54,7 @@
       <% if @garden.reviews.count > 0 %>
         <div class="d-flex align-items-center">
           <h3> <%= "⭐ #{@garden.reviews.average(:rating)}" %></h3>
-          
+
           <span class="ml-2 mb-2" id="no_reviews">(<%= pluralize @garden.reviews.size, "review" %>)</span>
         </div>
         <h4></h4>
@@ -145,7 +145,7 @@
     <div class="booking-form p-3 w-40 h-100 ml-auto">
       <h3 class="mt-2">£<%= @garden.price.round %> / per day</h3>
       <%= simple_form_for [ @garden, @booking ] do |f| %>
-        <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker", data: {dates: @garden.bookings.pluck(:date).reject(&:blank?)}}  %>
+        <%= f.input :date, as: :string, input_html: {class: "datepicker", data: {dates: @garden.bookings.pluck(:date).reject(&:blank?)}}  %>
         <%= f.submit "Book", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
@@ -196,7 +196,7 @@
         style="width: 80%; height: 60vh;"
         data-marker="<%= @marker.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-    </div>  
+    </div>
     <div class="ml-sm-3 w-20">
       <h3>Getting around</h3>
       <h4 class="pt-3"><i class="fas fa-underline" style="color: rgb(0,145,124);"></i> Underground</h4>

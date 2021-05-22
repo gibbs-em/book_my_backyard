@@ -5,3 +5,30 @@
   position: sticky;
   top: 0;
 }
+
+.titlefilters {
+  display: flex;
+}
+
+.feature-checkbox {
+  width: 80px;
+  display: flex;
+  align-items: center;
+  }
+
+.submit-button {
+  padding-right: 24px;
+}
+
+// .index-features {
+//   input {
+//     background-color:#34495E;
+//   }
+// }
+
+// label.input.checkbox {
+//   align-items: center;
+//   input.checkbox {
+//     padding-top: 4px;
+//   }
+// }
