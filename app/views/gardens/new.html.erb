@@ -3,10 +3,11 @@
     <div class="col-m-8 ">
     
       <div class="garden-new-form p-5" >
-      <h1 class="mb-5"> Create your garden</h1>
+      <h1 > Create your garden</h1>
+      <p class="mb-5" >Rent your garden any time you like </p>
         <%= simple_form_for @garden do |f| %>
-          <%= f.input :title %>
-          <%= f.input :description %>
+          <%= f.input :title, label: 'Name' %>
+          <%= f.input :description, class: "btn-rounded" %>
           <%= f.input :address %>
           <%= f.input :price %>
           <%= f.input :capacity %>
@@ -18,7 +19,7 @@
             <%= f.input :peaceful, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
             <%= f.input :heater, as: :boolean, checked_value: true, unchecked_value: false, boolean_style: :inline %>
           </div>
-          <%= f.input :photo, as: :file %>
+          <%= f.input :photo, label: 'Add Photo:', as: :file %>
           <%= f.submit "Create Garden", class: "btn btn-primary btn-rounded w-100 py-3" %>
         <% end %>
       </div>
