@@ -11,14 +11,14 @@
     <h2>Our favourite gardens this month</h2>
     <div class="cards-wrapper">
     <% @gardens.each do |garden| %>
-        <div class="card scrollcard" style="width: 18rem;">
+        <div class="card scrollcard card-rounded" style="width: 18rem;">
           <% if garden.photo.attached? %>
             <%= cl_image_tag garden.photo.key, width: 318, height: 200, crop: :fill, class: "card-img-top" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><%= garden.title %></h5>
             <p class="card-text"><%= garden.description %></p>
-            <%= link_to "See more", garden_path(garden.id), class: "btn btn-primary" %>
+            <%= link_to "See more", garden_path(garden.id), class: "btn btn-primary btn-rounded" %>
           </div>
         </div>
     <% end %>
