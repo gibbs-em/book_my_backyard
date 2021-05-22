@@ -1,36 +1,45 @@
-<div class="booking-info">
-<h2>Your Booking</h2>
+<div class="booking-info w-50">
+<h2><%= link_to @booking.garden.title, garden_path(@garden) %></h2><% til = @booking.date - Date.today %>
+<h3 class="date-til">Get excited - your booking is in <strong><%= til.to_i %> days!</strong></h3>
+<div class="booking-details">
+<h4>Date: <%= @booking.date.strftime("#{@booking.date.day.ordinalize} %B %Y") %></h4>
+<h4>Address: <%= @booking.garden.address %></h4>
+<h4 class="pb-2">Features: </h4>
+    <div class="features d-flex">
+      <div class="feature mb-4">
+        <div class="d-flex align-items-center"><i class="fas fa-toilet-paper p-auto" id="<%= 'strike' unless @garden.toilet %>"></i></div>
+        </div>
+      <div class="feature ml-5 mb-4">
 
-<h3><%= link_to @booking.garden.title, garden_path(@garden) %></h3>
-<p><%= @booking.garden.title %></p>
-<p><%= @booking.date  %></p>
-<% if @booking.garden.bbq %>
-<p>BBQ 🔥</p>
-<% end %>
-<% if @booking.garden.peaceful %>
-<p>Peaceful ✌</p>
-<% end %>
-<% if @booking.garden.heater %>
-<p>Heater 🥵</p>
-<% end %>
-<% if @booking.garden.toilet %>
-<p>Toilet 🚽</p>
-<% end %>
-<% if @booking.garden.rain_shelter %>
-<p>Shelter ☔</p>
-<% end %>
+        <div class="d-flex align-items-center"><i class="fas fa-umbrella" id="<%= 'strike' unless @garden.rain_shelter %>"></i></div>
+      </div>
+      <div class="feature ml-5 mb-4">
+        <div class="d-flex align-items-center"><i class="fas fa-volume-mute" id="<%= 'strike' unless @garden.peaceful %>"></i></div>
+      </div>
+      <div class="feature ml-5 mb-4">
+        <div class="d-flex align-items-center"><i class="fas fa-heading" id="<%= 'strike' unless @garden.heater %>"></i></div>
+      </div>
+      <div class="feature ml-5 mb-4">
+        <div class="d-flex align-items-center"><i class="fas fa-dumpster-fire" id="<%= 'strike' unless @garden.bbq %>"></i></div>
+      </div>
+    </div>
+    </div>
+<p>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+    Leave a review
+  </a>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="review-body">
+    <h4>Leave a review for <%= @booking.garden.title %></h4>
+    <%= simple_form_for [ @booking, @review ] do |f| %>
+      <%= f.input :title, label: "Headline" %>
+      <%= f.input :description %>
+      <div class="rating"><%= f.input :rating,  as: :radio_buttons, collection: 1..5 %></div>
+      <%= f.submit "Submit review", class: "btn btn-primary" %>
+    <% end %>
+    </div>
+  </div>
 </div>
-
-<div class="review-box p-2 w-25">
-<h4>Leave a review for <%= @booking.garden.title %></h4>
-<%= simple_form_for [ @booking, @review ] do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :rating %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
 </div>
-<p><%= link_to "All Gardens", gardens_path %></p>
-<p><%= link_to "All Bookings", bookings_path %></p>
-<p><%= link_to "Edit Booking", edit_booking_path(@booking) %></p>
-<p><%= link_to "Cancel Booking", booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" } %></p>
