@@ -13,11 +13,11 @@ const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
     const popup = new mapboxgl.Popup().setHTML(marker.info_window); // add this
 
-    // create a HTML element for each feature
-    const addStyle = document.createElement('div');
-    addStyle.className = 'marker';
+    // // create a HTML element for each feature
+    // const addStyle = document.createElement('div');
+    // addStyle.className = 'marker';
 
-    new mapboxgl.Marker(addStyle)
+    new mapboxgl.Marker()
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup) // add this
       .addTo(map);
