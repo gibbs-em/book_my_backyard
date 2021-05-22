@@ -29,10 +29,12 @@ import "bootstrap";
 // import { initSelect2 } from '../components/init_select2';
 
 import { initMapbox } from '../plugins/init_mapbox';
+import { initMapboxGardenShow } from '../plugins/init_mapbox_garden_show';
 import { initFlatpickr } from "../plugins/flatpickr";
 
 
 document.addEventListener('turbolinks:load', () => {
   initMapbox();
+  initMapboxGardenShow();
   initFlatpickr();
 })
