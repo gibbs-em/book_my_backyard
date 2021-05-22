@@ -54,7 +54,8 @@
       <% if @garden.reviews.count > 0 %>
         <div class="d-flex align-items-center">
           <h3> <%= "⭐ #{@garden.reviews.average(:rating)}" %></h3>
-          <span class="ml-2 mb-2" id="no_reviews">(<%= @garden.reviews.count %> reviews)</span>
+          
+          <span class="ml-2 mb-2" id="no_reviews">(<%= pluralize @garden.reviews.size, "review" %>)</span>
         </div>
         <h4></h4>
       <% else %>
@@ -198,9 +199,12 @@
     </div>  
     <div class="ml-sm-3 w-20">
       <h3>Getting around</h3>
-      <p class="pt-3">20 min tube on the central line</p>
-      <p class="pt-3">20 min bus from Waterloo Station</p>
-      <p class="pt-3">35-40 min walk though London</p>
+      <h4 class="pt-3"><i class="fas fa-underline" style="color: rgb(0,145,124);"></i> Underground</h4>
+      <p>20 min Central Line</p>
+      <h4 class="pt-3"><i class="fas fa-bus" style="color: rgb(0,145,124);"></i> Bus</h4>
+      <p>25 min Waterloo Stop J</p>
+      <h4 class="pt-3"><i class="fas fa-walking" style="color: rgb(0,145,124);"></i> Walking</h4>
+      <p>40 min walking</p>
     </div>
   </div>
 
@@ -245,10 +249,10 @@
   <div class="d-flex mt-4">
     <div class="w-40 ml-3">
       <h3>Your Host</h3>
-      <p><i class="fas fa-praying-hands" style="color: green;"></i>  <%= @garden.reviews.count %> Reviews <i class="fas fa-user-check" style="color: green;"></i> Identity verified <i class="fab fa-superpowers" style="color: green;"></i> Superhost</p>
+      <p><i class="fas fa-praying-hands" style="color: rgb(0,145,124);"></i>  <%= @garden.reviews.count %> Reviews <i class="fas fa-user-check" style="color: rgb(0,145,124);"></i> Identity verified <i class="fab fa-superpowers" style="color: rgb(0,145,124);"></i> Superhost</p>
       <strong>During your stay</strong>
       <p>We are only next door so if you need anything at all, whether it be a cup of sugar or some local knowledge just give us a knock or drop us a text.</p>
-      <strong><%= @garden.user.name %> is a <i class="fab fa-superpowers" style="color: green;"></i> Superhost</strong>
+      <strong><%= @garden.user.name %> is a <i class="fab fa-superpowers" style="color: rgb(0,145,124);"></i> Superhost</strong>
       <p>Superhosts are experienced, highly rated hosts who are committed to providing great venues for guests.</p>
     </div>
     <div class="w-40 ml-3">
