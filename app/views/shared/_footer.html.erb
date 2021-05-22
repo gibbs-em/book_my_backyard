@@ -5,10 +5,11 @@
     <li><%= link_to "All gardens", gardens_path, class:"footer-link" %></li>
     <li class="footer-link">|</li>
     <li><%= link_to "All bookings", bookings_path, class:"footer-link" %></li>
-    <% if current_user.nil? %>
-      <%= link_to "Log in", new_user_session_path %>
-      else
-      <%= link_to "Log out", destroy_user_session_path %>
+    <li class="footer-link">|</li>
+    <% if user_signed_in? %>
+      <li><%= link_to "Log out", destroy_user_session_path, class:"footer-link" %></li>
+      <% else %>
+      <li><%= link_to "Log in", new_user_session_path, class:"footer-link" %></li>
     <% end %>
   </ul>
   <div class="breakline"></div>
