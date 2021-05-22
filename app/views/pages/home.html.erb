@@ -26,7 +26,7 @@
     </div>
   <div class="quotes">
     <h2>What our users are saying</h2>
-      <% reviewOne = @reviews.sample %>
+      <% reviewOne = @reviews.first %>
       <div class="quote">
         <h4><%= reviewOne.description.capitalize %></h4>
           <small class="text-muted">
@@ -34,14 +34,14 @@
           </small>
       </div>
       <div class="quote">
-      <% reviewTwo = @reviews.sample %>
+      <% reviewTwo = @reviews[1] %>
         <h4><%= reviewTwo.description.capitalize %></h4>
           <small class="text-muted">
             <cite title="Reviewer"><%= reviewTwo.booking.user.name.capitalize %></cite>
           </small>
       </div>
       <div class="quote">
-      <% reviewThree = @reviews.sample %>
+      <% reviewThree = @reviews.last %>
         <h4><%= reviewThree.description.capitalize %></h4>
           <small class="text-muted">
             <cite title="Reviewer"><%= reviewThree.booking.user.name.capitalize %></cite>
